@@ -1,0 +1,22 @@
+From cefdf647d3db8b6cb6aa0585c47b08044276dc56 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Mon, 26 Jan 2026 16:51:14 +0100
+Subject: [PATCH] Add rich and questionary to requirements
+
+Added 'rich' and 'questionary' packages to requirements.txt to support enhanced terminal output and interactive prompts.
+---
+ requirements.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/requirements.txt b/requirements.txt
+index 83f0f5b..0b9fc9f 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,5 +1,7 @@
+ cloudscraper
+ beautifulsoup4
++rich
++questionary
+ black
+ pylint
+ mypy

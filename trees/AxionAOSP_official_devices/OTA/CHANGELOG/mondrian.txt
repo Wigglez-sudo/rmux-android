@@ -1,0 +1,170 @@
+Notes:
+==============================
+- AxionOS based source. Signed build.
+- For Recovery and KsuN check install instructions or Device TG Group.
+- Clean flash is required if coming from another rom.
+- Always dirty flash at your own risk. If your device bootloops, revert to an older build that boots.
+- Includes Dolby Atmos, POCO camera.
+- Credits to Arian16k, ph12nex, MIUI_users_r_GAY, Chaitanya, flakeforever, Adrianyyyy.
+- Report issues with logs.
+
+===== 06/02/2026 =====
+- [ax] adding game bypass variables
+- [ax] adding TARGET_SUPPORTED_REFRESH_RATES flag.
+- mondrian: audio: Fix invalid voice recognition stream KVs.
+- Camera: Update miuicamera from cupid OS2.0.209.0.VLCMIXM.
+- Camera: Update miuiscanner from cupid OS2.0.209.0.VLCMIXM.
+- Kernel-gki: upstream kernel and match latest los changes.
+- dolby: Whitelist permissions for Dolby.
+- dolby: Implement bottom gradient scrim.
+- dolby: Move Per-app audio profile to home settings.
+- dolby: Switch to toobar instead of navbar.
+- dolby: added ru localization added Russian lang for UI.
+- dolby: Separate volume leveler from audio tuning.
+- dolby: Introduce mid-frequency enhancer.
+- dolby: replace legacy Divider with Material3 HorizontalDivider.
+- dolby: Fix profile and settings restore after audio focus loss.
+- dolby: Create values-pt-rBR.
+- dolby: Externalize UI strings for localization support.
+- dolby: add spanish es-rES translations.
+- dolby: Prevent profile reset in AppProfileMonitorService.
+- dolby: Use accent color for dolby icon bg.
+- dolby: Switch to material 3 expressive color specs.
+- dolby: Add delete option for presets in import/export menu.
+Thanks to Ghosuto and all Contributors.
+- parts: Complete Jetpack Compose migration, remove legacy UI.
+- sm8450-common: Disable AptX voice property.
+- sm8450-common: udfps: Workaround onFingerDown() race.
+- sm8450-common: Shim WFD with libinput_shim.
+- sm8450-common: Switch to SwitchPreferenceCompat.
+- sm8450-common: add missing libjnihelper.so.
+- sm8450-common: Update blobs from diting OS2.0.206.0.VLFMIXM.
+- sm8450-common: Disable doze brightness handling every time.
+- sm8450-common: Disable EGL image tracking.
+- sm8450-common: Defer refresh rate changes when screen is off.
+- sm8450-common: Overlay: Define config_screenRecorderAVCProfileLevel.
+- sm8450-common: Camera: Set torch default strength level to max.
+- sm8450-common: Migrate libcameraservice ext lib to soong_config_set.
+- sm8450-common: parts: Apply Expressive theme.
+- sm8450-common: Switch to SwitchPreferenceCompat.
+- sm8450-common: devicesettings: Convert for M3E support.
+- sm8450-common: Build sensorservice 1.0 HAL.
+- sm8450-common: properties: Allow more cached apps in the background.
+- sm8450-common: sepolicy: Add binder call permissions for various HALs in system_app.
+- sm8450-common: Allow system_app to access Mlipay service.
+- sm8450-common: Shim WFD with libinput_shim.
+- sm8450-common: Revert back to GPU driver 615.95 (762.34 conflict with updated diting blobs).
+- aidl/fingerprint: utilize MaxPerformance task_profile.
+- pre-commit: Enable clang-format.
+- Introduce pre-commit & GitHub Actions for it.
+- megvii: Run clang-format.
+- sensors: Run clang-format.
+- IFAAService: Run through ktfmt.
+- Synced with latest sources.
+- Updated translations.
+- Some other fixes and improvements.
+
+===== 23/11/2025 =====
+- mondrian: Update blobs and firmware from OS2.0.208.0.VMNMIXM.
+- mondrian: pal: stream concurrency and custom key optimization.
+- mondrian: Add scroll optimizer props.
+- sm8450-common: sepolicy: Label wakeup_enable for FPC fingerprint sysfs node.
+- sm8450-common : import device fcm from lineageos.
+- sm8450-common: add gpu boost (axion sdk boost).
+- sm8450-common: Enable high touch sampling rate for AX game space.
+- sm8450-common: parts: Fix EINVAL error on write-only touch sampling sysfs node.
+
+===== 13/11/2025 =====
+DT:-
+- miuicamera: Import miuiscanner from cupid OS2.0.204.0.VLCMIXM
+- miuicamera: Adapt patches to cupid OS2.0.204.0.VLCMIXM
+- sm8450-common: sepolicy: Label more spi sysfs wakeup nodes.
+- sm8450-common: sepolicy: Fix fpc fingerprint sysfs wakeup label.
+- sm8450-common: sensors: Add support for secondary display in AodNotifier.
+- sm8450-common: Split and configure perf tuning.
+- sm8450-common: Enable UserfaultFD based GC by default.
+- sm8450-common: parts: Introduce PowerTools v3.0 with Thermal integration.
+- sm8450-common: overlay: Enable fp screen off unlock feature and turn off by default.
+Kernel:-
+- display-drivers: Disable xiaomi layer handling.
+- power: supply: qti_battery_charger: Add batt_sn, max_life_{vol,temp} and over_vol_duration nodes.
+- arm64/configs: custom: Enable power efficient workqueues.
+- rcu: Make the grace period workers unbound again.
+- touch: goodix: Make sure IRQ wake is disabled at probe.
+- touch: goodix: Do not disable IRQ twice.
+- touch: goodix: Fix free input device twice.
+- touch: goodix: fix deadlock in edge cases.
+- touch: goodix: Fix data racing.
+- touch: goodix: Avoid allocating memory frequently.
+- touch: goodix: Fix memory leak.
+- touch: goodix: Handle properly IRQ wake.
+- mm: Increase vmstat interval to 10 seconds.
+- ANDROID: arm64: cache: Lower ARCH_DMA_MINALIGN to 64 bytes.
+- include: dcache: Bump max inline dirent name size.
+- locking: Remove rcu_read_{,un}lock() for preempt_{dis,en}able().
+- mbcache: Speed up cache entry creation.
+- msm: kgsl: use kmem_cache pool for draw objects.
+- msm: kgsl: Don't try to wait for fences that have been signaled.
+- media: videobuf2: Perform a synchronized wake for waiting processes.
+GameBar:-
+- GameBar: Fix deprecated API warnings.
+- GameBar: perf: Implement comprehensive performance optimizations with 25-40% efficiency gains.
+- GameBar: feat: Add comprehensive i18n support for 10 languages with optimized structure.
+- GameBar: Add screen recording support and add "take screen record" in gesture quick actions menu.
+- Gamebar: Implement "no action" in gesture quick actions menu.
+- Gamebar: Implement "take screenshot" in gesture quick actions menu.
+- GameBar: Rework single tap, double tap, and long press gesture.
+- GameBar: Introduce advanced fps stats.
+- GameBar: Clean up excessive debug logging.
+- GameBar:fonts: Add Oppo Sans,SanFranciscoPro and SonySketch fonts.
+- GameBar: remove neverallow sepolicy.
+Display:-
+	GPU:-
+- Add new GPU driver 762.34.
+	HALs:-
+- config: Set SF caching property to 0 (enable).
+- display: Enable client composition cache.
+- gralloc: Bump allocator priority to 100.
+- init: Disable HWC large comp perf hint.
+- composer: Use foreground uclamp.
+- gralloc: Use foreground cpuset/uclamp.
+- REVERT: gralloc: Downgrade -EINVAL getMetaData warnings.
+- Synced with latest sources.
+- Updated translations.
+- Some other fixes and improvements.
+
+===== 28/10/2025 =====
+- mondrian: audio: Enable get_module_version for hotword sound model config.
+- mondrian: Decommonize vendor security patch level.
+- mondrian: Update blobs and firmware from OS2.0.207.0.VMNMIXM.
+- Parts: Remove GameBar functionality.
+- mondrian: Introduce GameBar app.
+- GameBar: Add comprehensive i18n support with 12 language translations.
+- GameBar: perf: add caching and safety improvements to GameBar.
+- Kernel: Merge 5.10.245 into android12-5.10-lts.
+- Kernel: net: wireless: cnss2: Implement sysfs show for recovery.
+- sm8450-common: Set config_dozeSupportsAodWallpaper true.
+- sm8450-common: Fix copy path for android.hardware.se.omapi.ese.xml.
+- sm8450-common: rootdir: Enable WLAN SSR recovery.
+- sm8450-common: Drop unused gpt-utils configuration to use BSG framework.
+- sm8450-common: config: Enable HW Rounded corner.
+- sm8450-common: Set executable permission on extract-files.py.
+- sm8450-common: sepolicy: Drop unused qcom-battery sysfs rules.
+- sm8450-common: sepolicy: Cleanup batterysecret rules using wakelock_use macro.
+- sm8450-common: sepolicy: Drop unused Goodix touchscreen wakeup label.
+- sm8450-common: sepolicy: Cleanup audio related policies.
+- sm8450-common: sepolicy: Drop unused thermal_zone87 temp label.
+- sm8450-common: Update blobs and firmware from OS2.0.204.0.VLFMIXM.
+- sm8450-common: Decommonize vendor security patch level.
+- sm8450-common: Align verified boot algorithms and rollback indices with stock.
+- sm8450-common: Use vendor enhanced media codecs for cape and taro.
+- sm8450-common: Remove software OMX blobs.
+- sm8450-common: sepolicy: Allow camera HAL to find quickcamera HAL.
+- sm8450-common: sepolicy: Correct audio hal socket rules and use unix_socket_connect macro.
+- Synced with latest sources.
+- Updated translations.
+- Some other fixes and improvements.
+
+Device changes: Date - 03/07/2025
+=================================
+- Initial official release

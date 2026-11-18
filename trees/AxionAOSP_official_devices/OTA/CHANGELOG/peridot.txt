@@ -1,0 +1,13 @@
+AxionOS Changelogs for peridot:
+
+Build Date: 04/06/2026
+- Source upstream
+
+Build Date: 27/05/2026
+- Initial build for new maintainer
+- Drop mi_thermald switch to qcom thermal-engine-v2
+- Add nonui notifier
+- Switch to reflex cpu governors
+- Add KProfiles by default
+- Include dolby and miui cam
+- Build QTI GNSS hal

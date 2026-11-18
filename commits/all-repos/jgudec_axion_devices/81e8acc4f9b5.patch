@@ -1,0 +1,68 @@
+From 2af4890f9821ef408af4665059f804ba34276d88 Mon Sep 17 00:00:00 2001
+From: Pabloescobar-reborn <yogivangala07@gmail.com>
+Date: Wed, 7 May 2025 11:35:31 +0530
+Subject: [PATCH] marble: 07/05/2024
+
+---
+ OTA/CHANGELOG/marble.txt | 27 +++++++++++++++++++++++++++
+ OTA/GMS/marble.json      | 12 ++++++------
+ 2 files changed, 33 insertions(+), 6 deletions(-)
+ create mode 100644 OTA/CHANGELOG/marble.txt
+
+diff --git a/OTA/CHANGELOG/marble.txt b/OTA/CHANGELOG/marble.txt
+new file mode 100644
+index 0000000..5b0b461
+--- /dev/null
++++ b/OTA/CHANGELOG/marble.txt
+@@ -0,0 +1,27 @@
++Device: Poco F5/ Redmi Note 12 Turbo
++Device code name : marble
++Device maintainer: PabloEscobar
++
++Date - 07/05/2025
++=================
++- Update blobs & fp from  OS2.0.4.0.VMRMIXM
++- Switched to OSS Audio HAL.
++- Fixed Goodix fp 
++- Add Dolby Atmos support. All credits goes to HellBoy
++- Fixed & add tools for thermals. All creidts goes to Kenway
++- Added Gamebar 4.0
++- Import QCOM audio effects from OnePlus 9R
++- use QCOM Implementation for Audio Effects
++- Add a property to enable prefetching video
++- Add missing layer buffer slots cache clear property
++- Extend audio offload buffer size to 256kb
++- Disable continuous transaction tracing on all build types
++- Set game refresh rate override to 120
++- Enable frame pacing for smoother visual performance
++- Allow more cached apps in the background
++- Apply dex2oat optimizations
++- Disable debug.sf.latch_unsignaled
++- Do not balance msm_drm and kgsl_3d0 IRQs
++- Dynamically set IRQ affinity for KGSL and MSM_DRM
++- Use HintManager for HWUI
++- Enable support for kernel idle timer
+diff --git a/OTA/GMS/marble.json b/OTA/GMS/marble.json
+index dcb5852..d554173 100644
+--- a/OTA/GMS/marble.json
++++ b/OTA/GMS/marble.json
+@@ -1,13 +1,13 @@
+ {
+     "response": [
+         {
+-            "datetime": 1740679001,
+-            "filename": "axion-1.1-20250227-OFFICIAL-GMS-marble.zip",
+-            "id": "b0e904f5477137bd7fda7d2a8300faf0",
++            "datetime": 1746592161,
++            "filename": "axion-1.3-NIGHTLY-20250507-OFFICIAL-GMS-marble.zip",
++            "id": "7c86be3db568616dd8be223c0756ecca",
+             "romtype": "OFFICIAL",
+-            "size": 2399536930,
+-            "url": "https://sourceforge.net/projects/pablo-marble-builds/files/Axionaosp_marble_official/axion-1.1-20250227-OFFICIAL-GMS-marble.zip/download",
+-            "version": "1.1"
++            "size": 2418766180,
++            "url": "https://sourceforge.net/projects/pablo-marble-builds/files/Axionaosp_marble_official/axion-1.3-NIGHTLY-20250507-OFFICIAL-GMS-marble.zip/download",
++            "version": "1.3"
+         }
+     ]
+ }

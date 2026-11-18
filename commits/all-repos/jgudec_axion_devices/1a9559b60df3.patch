@@ -1,0 +1,46 @@
+From 1a9559b60df3a3fa5953ae627e97dc116de22ff4 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Thu, 29 May 2025 18:31:48 +0200
+Subject: [PATCH] pipa : Update 2025/05/29
+
+---
+ OTA/CHANGELOG/pipa.txt |  6 ++++++
+ OTA/GMS/pipa.json      | 10 +++++-----
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+ create mode 100644 OTA/CHANGELOG/pipa.txt
+
+diff --git a/OTA/CHANGELOG/pipa.txt b/OTA/CHANGELOG/pipa.txt
+new file mode 100644
+index 0000000..a5973ed
+--- /dev/null
++++ b/OTA/CHANGELOG/pipa.txt
+@@ -0,0 +1,6 @@
++AxionOS v1.4
++Build Date : 2025/05/29
++
++- [XiaomiParts] Added initial support for stylus function customization -
++- Minor cleanups in the Nanosic module (for the official Xiaomi keyboard) -
++- Adjusted lid sensor logic to use threshold-based detection for improved precision -
+\ No newline at end of file
+diff --git a/OTA/GMS/pipa.json b/OTA/GMS/pipa.json
+index 61e269a..fab4776 100644
+--- a/OTA/GMS/pipa.json
++++ b/OTA/GMS/pipa.json
+@@ -1,12 +1,12 @@
+ {
+     "response": [
+         {
+-            "datetime": 1747240159,
+-            "filename": "axion-1.4-NIGHTLY-20250514-OFFICIAL-GMS-pipa.zip",
+-            "id": "bcd5fc93744b74aaf66031e76df23e22",
++            "datetime": 1748535698,
++            "filename": "axion-1.4-NIGHTLY-20250529-OFFICIAL-GMS-pipa.zip",
++            "id": "0df282b9ac53fc5b1de7697d9fb07ef3",
+             "romtype": "OFFICIAL",
+-            "size": 1850633056,
+-            "url": "https://github.com/rmuxnet/Axion-PIPA/releases/download/axion-1.4-NIGHTLY-20250514-OFFICIAL/axion-1.4-NIGHTLY-20250514-OFFICIAL-GMS-pipa.zip",
++            "size": 1853470407,
++            "url": "https://github.com/rmuxnet/Axion-PIPA/releases/download/14.1/axion-1.4-NIGHTLY-20250529-OFFICIAL-GMS-pipa.zip",
+             "version": "1.4"
+         }
+     ]

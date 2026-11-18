@@ -1,0 +1,24 @@
+From 69b52fbbed063de9ea5475497013258b9573cd2a Mon Sep 17 00:00:00 2001
+From: Armandas Kvietkus <armandas.kvietkus@proton.me>
+Date: Mon, 9 Nov 2026 07:56:46 +0000
+Subject: [PATCH] dt-bindings: input: awinic,aw86927: Add Awinic AW8697
+
+---
+ Documentation/devicetree/bindings/input/awinic,aw86927.yaml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/input/awinic,aw86927.yaml b/Documentation/devicetree/bindings/input/awinic,aw86927.yaml
+index b7252916b..e5ad51636 100644
+--- a/Documentation/devicetree/bindings/input/awinic,aw86927.yaml
++++ b/Documentation/devicetree/bindings/input/awinic,aw86927.yaml
+@@ -11,7 +11,9 @@ maintainers:
+ 
+ properties:
+   compatible:
+-    const: awinic,aw86927
++    enum:
++      - awinic,aw8697
++      - awinic,aw86927
+ 
+   reg:
+     maxItems: 1

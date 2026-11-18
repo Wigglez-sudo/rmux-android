@@ -1,0 +1,22 @@
+From e6c3a27229849d84fe62051f43b55a76783f5eb9 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Sun, 30 Mar 2025 14:47:08 +0100
+Subject: [PATCH] README - fix url
+
+---
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/README.md b/README.md
+index 25aa68b..e38bd9f 100644
+--- a/README.md
++++ b/README.md
+@@ -10,7 +10,7 @@ Repository for Arch Linux ARM packages and tools optimized for the Xiaomi Pad 6
+ 
+ 1. Download the setup script:
+    ```bash
+-   curl -O https://raw.githubusercontent.com/rmuxnet/pipa-arch/main/setup.sh
++   curl -O https://raw.githubusercontent.com/rmuxnet/pipa-arch/refs/heads/main/scripts/setup.sh
+    ```
+ 
+ 2. Make it executable:

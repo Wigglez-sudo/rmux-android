@@ -1,0 +1,18 @@
+From 0727b752d17bcb96dfe0f71db613c1e7ea76e8cf Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Sun, 23 Feb 2025 15:10:29 +0100
+Subject: [PATCH] Update axion.devices
+
+---
+ OTA/axion.devices | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/OTA/axion.devices b/OTA/axion.devices
+index d031c72..9ff9432 100644
+--- a/OTA/axion.devices
++++ b/OTA/axion.devices
+@@ -18,3 +18,4 @@ LG8n
+ peridot
+ LG7n
+ vayu
++a71

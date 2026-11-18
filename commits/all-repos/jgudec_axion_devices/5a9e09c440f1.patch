@@ -1,0 +1,18 @@
+From 5a9e09c440f122a994ebd0e1a77012d0cc821e65 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Sun, 23 Feb 2025 15:10:09 +0100
+Subject: [PATCH] Update axion.maintainers
+
+---
+ OTA/axion.maintainers | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/OTA/axion.maintainers b/OTA/axion.maintainers
+index 816f93c..39e9400 100644
+--- a/OTA/axion.maintainers
++++ b/OTA/axion.maintainers
+@@ -7,3 +7,4 @@ Rve
+ Shirayuki39
+ Drenzzz.
+ ste
++rmux

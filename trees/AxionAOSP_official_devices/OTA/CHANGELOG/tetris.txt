@@ -1,0 +1,42 @@
+Device: Nothing CMF Phone 1
+Device code name : tetris
+Device maintainer: Ashwani
+
+Date - 23/02/2026
+=================
+- Fixed up powerhint having invalid trailing comma.
+- Added big cluster boosting in LAUNCH.
+- Improved the cpu freq boosting in SUSTAINED_PERFORMANCE.
+- Improved the INTERACTION boost.
+
+
+Date - 29/01/2026
+=================
+- Improvement in powerhint for perf and efficiency.
+- Misc improvements and changes.
+
+
+Date - 10/01/2026
+=================
+- Initial Android 16-QPR1 update.
+- Fixed fingerprint flashbang completely.
+- Fixed the app closing lag/animations.
+- Fixed the saturation issues completely.
+- Improved the powerhint for better experience.
+
+
+Date - 04/12/2025
+=================
+- Fixed the fingerprint flashbang issue.
+- Fixed the Dim lockscreen issue.
+- Improved the overall smoothness.
+- Introduced the custom boost for better efficiency.
+
+
+Date - 02/12/2025
+=================
+- Initial official release.
+- Tuned/Refined the powerhint for balance perf. (fixed heating/battery drain)
+- Added Performance mode support (available in battery settings)
+- Added scroll-optimizer with dynamic profile.
+- Added misc changes for better experience.

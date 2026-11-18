@@ -1,0 +1,58 @@
+From 9ea7a2f54c72e72d385368e5cbcc7e48967805ea Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Sat, 12 Apr 2025 15:54:14 +0200
+Subject: [PATCH] OTA : update A71 builds
+
+---
+ OTA/GMS/a71.json     | 12 ++++++------
+ OTA/VANILLA/a71.json | 12 ++++++------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/OTA/GMS/a71.json b/OTA/GMS/a71.json
+index 0169b68..3d8273e 100644
+--- a/OTA/GMS/a71.json
++++ b/OTA/GMS/a71.json
+@@ -1,13 +1,13 @@
+ {
+     "response": [
+         {
+-            "datetime": 1743619987,
+-            "filename": "axion-1.2-BETA-20250402-OFFICIAL-GMS-a71.zip",
+-            "id": "5c12e058289dc4a8ad3b75b521a6812e",
++            "datetime": 1744400406,
++            "filename": "axion-1.3-BETA-20250411-OFFICIAL-GMS-a71.zip",
++            "id": "50fe1f2ca6b43e9b4350b95e5bb1d960",
+             "romtype": "OFFICIAL",
+-            "size": 1721758785,
+-            "url": "https://github.com/rmuxnet/Axion-A71/releases/download/1.1-1.2/axion-1.2-BETA-20250402-OFFICIAL-GMS-a71.zip",
+-            "version": "1.2"
++            "size": 1722594201,
++            "url": "https://github.com/rmuxnet/Axion-A71/releases/download/1.1-1.2/axion-1.3-BETA-20250411-OFFICIAL-GMS-a71.zip",
++            "version": "1.3"
+         }
+     ]
+ }
+diff --git a/OTA/VANILLA/a71.json b/OTA/VANILLA/a71.json
+index cef88e6..c9e0a8f 100644
+--- a/OTA/VANILLA/a71.json
++++ b/OTA/VANILLA/a71.json
+@@ -1,13 +1,13 @@
+ {
+     "response": [
+         {
+-            "datetime": 1743620624,
+-            "filename": "axion-1.2-BETA-20250402-OFFICIAL-VANILLA-a71.zip",
+-            "id": "0cb04dc9280a9afa6e16709ff1ec2a01",
++            "datetime": 1744401065,
++            "filename": "axion-1.3-BETA-20250411-OFFICIAL-VANILLA-a71.zip",
++            "id": "bb686f7d67e1b4cff782bf5fdfa4a883",
+             "romtype": "OFFICIAL",
+-            "size": 1287527018,
+-            "url": "https://github.com/rmuxnet/Axion-A71/releases/download/1.1-1.2/axion-1.2-BETA-20250402-OFFICIAL-VANILLA-a71.zip",
+-            "version": "1.2"
++            "size": 1286144708,
++            "url": "https://github.com/rmuxnet/Axion-A71/releases/download/1.1-1.2/axion-1.3-BETA-20250411-OFFICIAL-VANILLA-a71.zip",
++            "version": "1.3"
+         }
+     ]
+ }

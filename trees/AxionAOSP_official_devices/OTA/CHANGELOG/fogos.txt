@@ -1,0 +1,45 @@
+AxionOS v2.9
+Build Date : 28/10/2026
+- Just sync latest source
+
+AxionOS v2.9
+Build Date : 13/10/2026
+- Revert liboemcrypto (fixed video glitch)
+- There's nothing special
+- Etc.
+
+AxionOS v2.7
+Build Date : 04/06/2026
+- Fixed mic delay during VoIP calls
+- Fixed widevine certification issue
+- Switch to GMS build
+- Update to V1UGS35M.75-14-9-3-1-2
+
+AxionOS v2.6
+Build Date : 20/05/2026
+- Bringback DolbyAtmos
+- Fixed black screen issue while trying to wake the device
+- Specify vendor.usb.device
+- Specify vendor.usb.controller
+- Etc.
+
+AxionOS v2.5
+Build Date : 08/04/2026
+- Added AxionFX
+- Drop DolbyAtmos
+- Remove fwk-detect lib from PRODUCT_PACKAGES
+- Fixed bad RAM management
+- Adapt powerhint from redfin
+- Set CPU up_rate_limit to 0 for INTERACTIVE
+- Re-tune power hint for efficiency
+- Boost cpus for EXPENSIVE_RENDERING
+- Set screen-off schedutil ratelimits
+
+AxionOS v2.4
+Build Date : 05/03/2026
+- Initial official release
+- Sync with latest source
+- MotoCam included
+
+Credits :
+LineageOS for base tree

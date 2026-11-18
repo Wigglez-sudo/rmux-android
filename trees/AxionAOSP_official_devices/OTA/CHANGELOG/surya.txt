@@ -1,0 +1,34 @@
+Device: POCO X3 / POCO X3 NFC (surya)
+
+Date - 29/01/2026
+=================
+- Initial QPR1 release
+
+AxionOS v2.2 NIGHTLY
+- Improve Camera HALs
+- Fixed portrait mode in camera
+- Add QR scanner to Leica
+- Refactor SF props
+- Fixed NFC issue in previous version
+- Implement torch light control (Flashlight Strenght)
+- Add bypass charge support
+- Dolby Atmos supported
+- More kernel improvements
+
+AxionOS v2.1 NIGHTLY
+Build Date : 26/10/2025
+- Initial Baklava release
+- Gilver kernel as default kernel
+- Redefining partitions
+- LeicaCam included v4.7
+- Firmware included
+- More improvement
+
+AxionOS v1.6 Final
+Build Date : 06/23/2025
+- No more KernelSU-Next support
+- Nuke XiaomiParts
+- Compile HWUI for performance
+- Make it support Leica again
+- More stability improvements
+- No more support for Viper4FX

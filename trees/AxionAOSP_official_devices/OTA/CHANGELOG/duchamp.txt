@@ -1,0 +1,74 @@
+AxionOS v2.8
+Build Date : 05/10/2026
+- Clean flash mandatory
+- Fenrir included (Read: https://telegra.ph/Whats-is-Fenrir-07-21 )
+- Sycned with rio's new trees
+
+AxionOS v2.7
+Build Date : 04/06/2026
+- Heating issue Fixed
+- Misc changes
+
+AxionOS v2.6
+Build Date : 22/05/2026
+- Tuned AxBurstEngine V2
+- Added BurnIn Protection
+- Some MISC changes
+
+AxionOS v2.5
+Build Date : 09/04/2026
+- Added AxionFX
+- Shited back to QTI vibrator services
+- Switched to GED GPU frequency control
+- Enabled mgame
+- Dropped Thermal profiles & modified thermals
+- Dropped BesLoudness
+- Dropped Viper4androidFx
+
+AxionOS v2.4
+Build Date : 28/01/2026
+- Sync with latest source
+- Both vanilla & Gapps builds 
+
+AxionOS v2.3
+Build Date : 16/01/2026
+- Updated Dolby UI
+- Fixed C2 crashes
+- Fixed GameSpace touch boost re-toggling
+- More Misc changes
+
+AxionOS v2.2.1
+Build Date : 17/12/2025
+- Dec security patch
+- Fixed tiktok crashs
+
+AxionOS v2.2.1 - HOTFIX
+Build Date : 27/11/2025
+- Fixed Heating issues
+- Fixed Wifi wpa2 connectivity for old routers
+- Seperated 2.4Ghz & 5Ghz option in hotspot settings
+- Small Fp changes
+
+AxionOS v2.2.1
+Build Date : 23/11/2025
+- Added HTSR(enable touch boost in gamespace for 500hz)
+- Added modified thermals(fixes half ded gpu)
+- Fixed low antutu scores
+- Enabled zram writeback
+- Many More MISC Changes
+
+AxionOS v2.2
+Build Date : 13/11/2025
+- Added Dolby Atoms support
+- Added Thermal Parts
+- Enabled ScrollOptimizer
+- Color shifting in certain apps fixed
+- Few UDFPS Related changes
+
+AxionOS v2.1
+Build Date : 14/10/2025
+- Upstreamed Kernel to 6.1.68
+- Fixed UI Elements Flickering
+- Added HDR Brightness Slider
+- Added Torch light strength control
+- Few More Misc changes

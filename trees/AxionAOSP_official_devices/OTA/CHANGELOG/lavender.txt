@@ -1,0 +1,79 @@
+Axion v2.9
+Build Date : 08/11/2026
+
+- Fix USB audio output
+- Fix charging control
+- powerhint: adapt adpf, uclamp and HeuristicBoost from raphael
+- Kang lmkd prop from rmx2020
+- Import uclamp sysctl tunings
+- Enable dynamic_ecns audio feature
+- Explicitly disable GL comp backpressure for better blur handle
+- lmkd set prop for kill heaviest task instead of any eligible task
+- bring back dolby atmos
+
+Axion v2.7
+Build Date : 10/06/2026
+
+- Synced with latest source
+- Improves system performance
+- Improves system stability
+
+Axion v2.6
+Build Date : 30/05/2026
+
+- Enable RAW10 buffer fix in gralloc (fixes 48mp cam)
+- Enable PERF_ANIM_OVERRIDE
+- Update powerhint raise CPUBWHystTriggerCount value
+- More misc changes and fixes
+
+Axion v2.5
+Build Date : 17/04/2026
+
+- Added Flashlight strength control
+- Added Battery led settings
+- Enabled Blur on qs 
+- Switch HWUI rendering backend to opengl
+- Set default pin amount for home app
+- overlay: Convert config_screenBrightnessDoze to float
+- powerhint: Decrease launch boost to 3sec
+- powerhint: Add SchedBoost hints
+- powerhint: Set screen-off schedutil ratelimits
+- rootdir: Update cpusets tunables
+- rootdir: Clean-up early boot script
+- Override display service to foreground CPU set.
+- rootdir: Use foreground cpuset/uclamp for gralloc
+- rootdir: Initial performance tuning
+- rootdir: Set up/down_rate_limit_us to 1000us
+- rootdir: Boost GPU to max for expensive rendering
+- Cleanup some useless props
+- rootdir: Reduce schedutil rate limits
+- rootdir: Finetune scaling frequencies
+- Checkout and cleanup overlay from xiaomi_sdm660-common
+- rro_overlay: Reduce blur radius (weak gpu)
+
+AxionOS v2.4
+Build Date : 16/02/2026
+
+- Fix seccomp policy for codec2 and imsrtp
+- Set debug.sf.auto_latch_unsignaled to 0
+- Drop few useless overlay
+- Remove intent for BootReceiver (Fixes DeviceSettings crash)
+- Drop Xiaomi doze completely (useless)
+- props: Update work durations from kalama
+- Checkout media configs from stock (fixes 1080p 60fps lag)
+- biometrics: utilize MaxPerformance task_profile
+- Disable auto rotation by default
+- disabled blur for smoother ui experience
+
+AxionOS v2.3
+Build Date : 10/01/2026
+
+- Initial a16 qpr1 release
+- Syned Kernel with Lineage sdm660
+
+AxionOS v1.6
+Build Date 25/06/2025
+- Initial Build
+- Dolby Atmos support
+- Vanilla and GMS (Pico) both variants available
+- switch to FBE-V2 encryption

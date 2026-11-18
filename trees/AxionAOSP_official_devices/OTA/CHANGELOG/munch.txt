@@ -1,0 +1,94 @@
+Device: Poco F4/ Redmi K40s
+Device code name : munch
+Device maintainer: SenX
+
+AxionOS v2.9
+Build Date : 24/10/2026
+- Rebase device tree
+
+AxionOS v2.7
+Build Date : 07/06/2026
+- GMS VARIANT 
+  - Switched to Core from Pico
+  - Included Partner set-up
+- Improve surflace flinger
+- Add doze gesture flags
+- Tone down CamX and CHIUSECASE logging
+- Add dolby vision support
+
+AxionOS v2.6
+Build Date : 17/05/2026
+- RE404 Kernel R15 NOKSU
+- Disabled scroll optimizer
+- Disabled perf anim overrride
+- Dropped BPF requirements
+- Enable small battery configuration
+- Reduce blur radius
+- More misc changes
+
+AxionOS v2.5
+Build Date : 09/04/2026
+- Added New Dolby
+- Added AxionFX
+- Fixed 60hz issue
+- Dropped dup per app rr
+- Fixed Random reboot (unless you have bad quality battery)
+
+AxionOS v2.4-SOLACE
+- Force LZ4 for zram
+- Improve signal reception
+- More misc improvements
+
+AxionOS v2.3-TELOS
+- Initial update based on Android 16-QPR1
+- Massive device trees rebase to commonize
+- More misc improvements and fixes 
+
+AxionOS v2.2.1-HOTFIX
+- Fixed Random crash issues
+- Fixed Leica crash issue
+- Fixed some injection detections
+- Import display config from HyperOS to improve HDR content appearance (again)
+
+AxionOS v2.2.1
+Build Date : 23/11/2025
+- Sync updates/fixes from source
+- Add back Device as webcam support 
+- Tuned audio again
+- Disable skia tracing by default 
+- Revert some broken changes
+- Fix bt ringtone bug
+- Enable vonR for airtel and jio
+- More misc improvements
+
+AxionOS v2.2
+Build Date : 11/11/2025
+- Introduced torch light control (with proper selinux fix)
+- Removed quad mic (fixes in-game mic for various games)
+- Switched wfd system blobs to from dada 
+- Tune audio for better sound quality 
+- Import display config from HyperOS
+- Disable phantom process killing 
+- Disable verbose camera logs
+- Removed deprecated configs
+- Enable QTI memory Opt
+- Enable system wide scroll optimizer
+- Import pocket detection service the same usage as stock miui
+- Disable slow blur sluggish effect 
+- Dropped oem fast charge
+- Clean up unused manifest entries and more unused flags
+- Removed obsolete sf properties 
+- Set dex2oat thread count and cpuset
+- Enable support for wifi 6 hotspot 
+- Add PUBGM, BGMI and CODM GLOBAL & GARENA to sched_lib_name (fixes full gpu utilization) 
+- Nuked Gamebar (causes mem leak)
+- Added some patches from lineage 
+- More minor improvements
+
+AxionOS v2.1
+Build Date: 24/10/2025
+- Initial Build
+- Dolby Atmos support
+- Leica Cam Included
+- Ship with FusionX Kernel
+- Vanilla and GMS (Pico) both variants available

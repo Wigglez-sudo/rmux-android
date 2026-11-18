@@ -1,0 +1,139 @@
+Device: Redmi Note 12 Pro / Plus / Discovery 5G
+Device code name : rubyx
+Device maintainer: Casanova.
+
+AxionOS v2.9 Hotfix
+Date :- 27/10/26
+=================
+- Rework powerhint
+- Drop zram writeback and enforce swappiness to 100
+- Tune SurfaceFlinger latency and switch blur algorithm to kawase2
+- Tune schedutil rate limits and align foreground uclamp cpusets
+- Address SELinux denials (campostproc, Dolby Vision, fingerprint/spi, system_app)
+- Stop enforcing mq-deadline at boot
+- Drop obsolete telephony vendor_init props
+- Kernel: Introduce BORE scheduler
+- Kernel: Enable ThinLTO with machine function split optimizations
+- Kernel: Optimized memory functions (memcpy, memmove, memset, memcmp)
+- Kernel: Add driver to control MediaTek sched boosts from userspace
+- Kernel: Scheduler optimizations and ttwu fixes
+- Kernel: Extensively purge MTK driver logging and debug spam
+- Kernel: Upstream filesystem stability fixes for F2FS and FUSE
+- Kernel: BPF, networking, blk-mq, and memory management fixes
+- Multiple under-the-hood improvements
+
+AxionOS v2.9
+Date :- 11/10/26
+=================
+- Update blobs to OS2.0.16.0.UMOMIXM
+- Switch wlan_assistant to source-built daemon
+- Fix wpa_supplicant NULL pointer dereference in set_country
+- Add custom power mode hints for AxDragonite
+- Address Health HAL SELinux denials; label Axion sepolicy rules
+- Scheduler/perf tuning (schedutil, CFS, mq-deadline, TCP buffers)
+- Memory/props tuning (MGLRU, VSYNC idle, HWUI, Dalvik, AOT, SQLite)
+- Overlay tweaks (JobScheduler deep sleep, blur reductions)
+- Audio routing (USB deep_buffer, spatializer PCM profiles)
+- Miscellaneous power fixes (uclamp/cgroup) 
+- Disable statsd on boot, FUSE passthrough
+- Kernel: Merge CIP stable up to v4.19.325-cip136
+- Kernel: Backport Google BBRv3 & TCP PLB; enable SCSI-MQ + BBR default
+- Kernel: MediaTek DRM/display fixes (OVL, LK handoff, addon removal)
+- Kernel: UFS/SCSI-MQ fixes, zram lzo-rle, disable MTK debug drivers
+- Kernel: Security fixes (SELinux/ged panic, fuse UAF, f2fs, evdev, BPF)
+- Multiple under-the-hood improvements
+
+AxionOS v2.7 BETA [hotfix]
+Date :- 21/06/26
+=================
+- Fix 4k30fps in micam for broken variants
+- Fix idle warming in some cases
+- Kernel: Fix random reboots due to heavy i/o operations
+- Kernel: Merge latest stable CIP patches upto cip133-st17
+- Kernel: Implement lz4 compression properly
+
+AxionOS v2.7 BETA
+Date :- 14/06/26
+=================
+- Fix Dolby crash on ID, CN and some GL devices
+- Fix broken VoWiFi and ViLTE for all carriers
+- Fix broken WPA3 WiFi in some cases
+- Switch Dolby Atmos blobs from Motorola to Sony
+- Update A34 connectivity blobs from A16
+- Fix battery drain caused by statsd
+- Disable proximity sensor usage during doze
+- Switch to AVC 3.1 for screen recording
+- Swap thermal navigation and streaming icons in parts
+- Drop useless patches, props and flags
+- Kernel: Improve shared tag set performance
+- Kernel: Tweak cpuidle governor for faster deep C-state entry
+- Kernel: Advertise maximum AKM suites for better WiFi compatibility
+- Kernel: Lower reclaim segment and threshold
+- Kernel: Silence CPU bring-up log spam
+
+AxionOS v2.6
+Date :- 23/05/26
+=================
+- Update blobs to OS2.0.12.0.UMOMIXM
+- Add kaeru-patched lk.img and preloader_raw.img
+- Fix Dolby Atmos not showing in Apple Music
+- Fix 4K playback in YT, as well as lag and heating while video playback
+- Fix MiuiCamera lag while switching modes
+- Merge latest stable CIP patches up to cip131
+- Multiple kernel side improvements for better perf
+- Improve deep sleep and reduce loggers
+- Rework powerhint with CPU boosts
+- Tune uclamp floor, memory reservation and system server scheduling
+- Drop FPSGO and EAS-dependent boosts
+- Add some missing SELinux rules for PowerHAL and camera uclamp nodes
+- Drop QS interaction boost patch
+- Optimize dex2oat for faster app installation
+- Drop useless props and flags; miscellaneous cleanup
+
+AxionOS v2.5
+Date :- 12/04/26
+=================
+- Update blobs to OS2.0.11.0.UMOMIXM
+- Update connectivity blobs from A34
+- Add hardware Dolby Atmos support; drop legacy Dolby stack
+- Rework powerhint based on stock MTK hints
+- Tune scheduler, GPU DVFS and FPSGO for smoother UI
+- Relax thermal throttling for sustained performance
+- Enable high performance transitions and SystemUI interaction boost
+- Switch to AIDL Codec2 with source-built C2 service; disable OMX
+- Switch to AOSP remote submix and OSS Bluetooth audio
+- Move to H.264 video codec; drop OMX aliases
+- Tune SurfaceFlinger uclamp, refresh rate and frame pacing
+- Rebalance audio volume curves, steps and mute duration
+- Optimize ZRAM, LMK thresholds and memory management
+- Tune dex2oat and HWUI for better rendering performance
+- Add automated patch framework with BPF and epoll_pwait2 fallbacks for 4.19 kernel
+- Fix wpa_supplicant WPA3 advertisement and VoWifi IWlan mode
+- Address SELinux denials for PowerHAL, WiFi and audio HAL
+- Add Wi-Fi Direct and dual STA interface support
+- Build MtkInCallService and MediaTek WiFi library
+- Optimize auto brightness curve and keyguard refresh rate
+- Add AxFX and Doze gesture flags
+- Switch to official Axion signing keys
+- Miscellaneous props cleanup and logspam reduction
+
+AxionOS v2.4
+Date :- 17/02/26
+=================
+- Update blobs to OS2.0.10.0.UMOMIXM
+- Implement flashlight strength control
+- Include new Dolby UI
+- Tune kernel sched parameters
+- Re-implement fpsgo
+- Tweak memory management (LMK)
+- Rework powerhint for reducing jank
+- Fix some sepolicy rules for PowerHAL
+- Switch USB tethering from NCM back to RNDIS
+- Disable blur for smoother UI experience
+
+Date - 14.01.2026
+=================
+- Initial official A16 QPR1 release
+- Tuned powerhint for smooth blur
+- WPA3 Wi-Fi and Hotspot fixed
+- Added Viper4AndroidFX

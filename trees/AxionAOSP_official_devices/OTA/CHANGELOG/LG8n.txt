@@ -1,0 +1,44 @@
+AxionOS v2.6
+Build Date 2026/05/23
+- Switch default governor to reflex
+- Update Kernel to Yuuka v4.1
+- Switch to GED GPU control
+
+AxionOS v2.5
+Build Date: 2026/04/17
+- Update Mali Blobs to r38p1
+- Sync with Axion sources
+
+Build Date: 2026/04/09
+- Update Kernel to Yuuka v3.6
+- Initial Axion QPR2 Release
+
+AxionOS v2.4
+Build Date: 2026/01/30
+- Update Kernel to Yuuka v3.1
+- Sync with latest Axion sources
+
+Build Date: 2026/01/27
+- Build mediaTek WiFi lib and enable OUI support on  wpa_supplicant_8
+- mt6789-common: Drop deprecated/unused vendor.mediatek.hardware.audio@6.1
+- mt6789-common: Switch to source-built AIDL C2 service
+
+AxionOS v2.3
+Build Date: 2026/01/19
+- Switch to Yuuka Kernel(MGLRU-enabled variant of Mahiru Kernel)
+- Switch to redesigned dolby manager
+- Kang compressions and garbage collection options from zumapro fstab
+- fstab: use metadata_csum for /metadata
+- Add option to use fscompress for F2FS
+- Set the correct parameter for A2DP suspend
+- Stop patching audio hw module with lib{binder,utils,hidlbase}-v32
+- Properly patch blobs related to Stagefright
+
+Build Date: 09/01/2026
+- Initial Android 16 QPR1 Release
+
+AxionOS v1.4
+Build Date : 08/05/2025
+- Upstream Kernel to 5.10.237
+- Remove Saturated and Adaptive Color Modes
+- Enable WPA3-SAE for SoftAP

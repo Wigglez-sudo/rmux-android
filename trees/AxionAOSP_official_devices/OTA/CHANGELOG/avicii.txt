@@ -1,0 +1,35 @@
+AxionOS v2.9
+Build Date: 05/11/2026
+- Sync with latest Axion OS source
+Build Date: 14/10/2026
+- Update adreno graphics drivers from hollywood
+
+AxionOS v2.8
+Build Date: 06/10/2026
+- Switched to pure 64 bit ROM
+- Update media C2 stack and configs from barbet
+- Update WFD vendor stack from salami
+- Switch to libperfmgr
+- Added Dolby vision support (Upto 4K 60fps)
+- Fixed 32.3 MP resolution output in OnePlus Camera
+- Added torch control functionality for alert slider
+
+AxionOS v2.7
+Build Date: 07/06/2026
+- CFI & LTO enabled kernel
+- Merge tag 'v4.19.325-cip132-st16' of https://git.kernel.org/pub/scm/linux/kernel/git/cip/linux-cip.git
+- Merge latest CLO kernel patches
+- Merge latest CLO patches for audio, camera, display, gpu and wlan drivers
+- Update FCM level to 7
+- Added System UI restart in advanced reboot menu
+
+AxionOS v2.6
+Build Date : 17/05/2026
+- Switch to armv8-2a-dotprod variant
+- Optimize native executables for Cortex-A76 CPU
+- Increment audio input/output values by 8
+- Added Alert Slider UI dialogs
+
+AxionOS v2.5
+Build Date : 20/04/2026
+- Initial release

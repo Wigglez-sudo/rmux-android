@@ -1,0 +1,21 @@
+From bc5139bbc0d98f11962205297b8259fd1d521378 Mon Sep 17 00:00:00 2001
+From: Armandas Kvietkus <armandas.kvietkus@proton.me>
+Date: Mon, 12 Oct 2026 11:12:36 +0200
+Subject: [PATCH] unlock-luks: do not use the password as printf format
+
+Signed-off-by: Armandas Kvietkus <armandas.kvietkus@proton.me>
+---
+ bin/unlock-luks | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/unlock-luks b/bin/unlock-luks
+index bcb2ce3..2687166 100644
+--- a/bin/unlock-luks
++++ b/bin/unlock-luks
+@@ -42,5 +42,5 @@ printf 'Enter password: '
+ stty -echo
+ read luks_password
+ stty echo
+-printf "${luks_password}" >/luks_passfifo
++printf '%s' "${luks_password}" >/luks_passfifo
+ printf '\n'

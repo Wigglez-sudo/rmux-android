@@ -1,0 +1,75 @@
+AxionAOSP v2.9
+Build Date: 20/10/2026
+- Synced to the latest AxionAOSP sources (Freezing Fixes)
+
+AxionAOSP v2.9
+Build Date: 19/10/2026
+- Synced to the latest AxionAOSP sources
+- Restrict apps access to /proc/net/unix
+- Enable display smooth motion
+- rro_overlays: Drop COLOR_MODE_AUTOMATIC
+- Enable TWS plus feature using persist property
+- AAC frame control enabled for hal implementation
+- Drop debug.sf.latch_unsignaled property
+- Enable debug.sf.auto_latch_unsignaled property
+- Add formattable flag for /data fstab entry
+- fix vold_prepare_subdirs denials
+- Switch to Kawase2 render engine blur algorithm
+- Use skiagl threaded
+
+AxionAOSP v2.3
+Build Date: 23/01/2026
+- Synced latest AxionAOSP sources (QPR1)
+- Switched to Spiteful Kernel
+- Update some soong config variables to bool
+- Disable high performance transitions
+- Inherit New Dolby UI
+- Drop vendor/sdmsteppe-perf_defconfig
+- Drop "Patch com.vidhance.node.eis.so with libui-v34" and use "Patch com.vidhance.node.eis.so to allocate GraphicBuffer with new size"
+
+AxionAOSP v2.2.1
+Build Date: 27/11/2025
+- Synced latest AxionAOSP sources
+- Switch to LOS-perf Kernel src a.k.a Maiar Kernel
+- Remove deprecated vibration patterns in overlay
+- overlay: Downscale task snapshots to 70%
+- overlay: Set config_network_type_tcp_buffers
+- overlay: Use the new auto network selection UI
+- overlay: Enable USB and skin temperature warnings
+- overlay: Disable NL80211_REG_CHANGED event
+- Remove unused libswvdec blob
+- Drop 64-bit soundtrigger blobs
+- Add a script to reorder blobs list
+- qdcm: Remove unused 0e_0b DSI panel
+- rootdir: Remove wigig components leftovers
+- Remove tetheroffload config HIDL entry
+- Do not boost schedtune while screen is off
+- Do not build UdfpsHandler
+- Convert gps to blueprints
+- Set readahead_size_kb=128 for userdata and dynamic partitions
+- Disable thumbnail_block_model in libstagefright
+- Do not prefer hw codecs in thumbnail previews
+- Silence hwcomposer and HWUI logspam
+- Suppress CamX/CHIUSECASE logspam
+- Switch to NCM USB tethering
+- Opt out of speaker_layout_channel_mask field
+- Optimize native executables for Cortex-A76
+- sepolicy: Allow vendor_hal_usb_qti to read UDC sysfs
+
+AxionAOSP v2.1
+Build Date: 15/10/2025
+- Drop so many non-sense commits
+- Drop XiaomiParts (eg. Per-App Refreshrates, Thermal Profiles)
+- Drop ViPER4Android FX (there's a module for it so...)
+- Add support for gralloc handles with reserved_size
+- Add support for KProfiles (experimental)
+- More various improvements...
+
+AxionOS v1.6 Final Stable
+Build Date : 07/21/2025
+- Final A15 Build
+- Drop BCR by default
+- Fixed AIDL Hals (eg. ir, usb.gadget)
+- Fixed Camera info for M2101K6P variant
+- Silent HWUI, Hwcomposer, CHIUSECASE logspams
+- Get rid of KSU by default (we need to obey AxionAOSP code of conduct).

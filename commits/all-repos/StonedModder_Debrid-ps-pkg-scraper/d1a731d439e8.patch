@@ -1,0 +1,305 @@
+From d1a731d439e87f8f95fb8778bdd31bbdb124c84b Mon Sep 17 00:00:00 2001
+From: rmxunet <armandas.kvietkus@proton.me>
+Date: Fri, 30 Jan 2026 22:33:01 +0100
+Subject: [PATCH] 1.1
+
+---
+ .gitignore      |  1 +
+ README.md       | 31 ++++++++++++++++++++++++++-----
+ app.py          | 16 +++++++++++++++-
+ settings.json   | 22 ++++++++++++++++++++++
+ src/config.py   | 42 ++++++++++++++++++++++++++++++++++++++++++
+ src/database.py | 20 ++++++++++++++++++--
+ src/scraper.py  | 32 ++++++++++++++++++++------------
+ 7 files changed, 144 insertions(+), 20 deletions(-)
+ create mode 100644 settings.json
+ create mode 100644 src/config.py
+
+diff --git a/.gitignore b/.gitignore
+index 786ffc4..c570f7b 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1 +1,2 @@
+ /src/__pycache__
++games_cache.json
+diff --git a/README.md b/README.md
+index 9081f2b..d3ce2b0 100644
+--- a/README.md
++++ b/README.md
+@@ -12,13 +12,34 @@ A simple command-line tool to search and retrieve PS4/PS5 game download links.
+ 
+ ## Usage
+ 
+-Run the tool:
++Interactive mode (default):
+ ```bash
+ python app.py
+ ```
++Direct search (non-interactive prompt + selection):
++```bash
++python app.py -s "Grand Theft Auto"
++# or
++python app.py --search "Grand Theft Auto"
++```
++
++Workflow:
++- Search for a game name.
++- Select a result to view game info and download links.
++- Copy links as needed.
++
++## Configuration
++
++Settings are read from `settings.json` (defaults are used if missing). You can customize:
++- scraper.base_url
++- scraper.timeout
++- scraper.ignore_domains
++- database.cache_file
++- database.cache_ttl
++
++Default cache file: `games_cache.json`. Default cache TTL: 31536000 seconds (configurable via `settings.json`).
+ 
+-1.  **Search:** Enter a game name (e.g., "Grand Theft Auto").
+-2.  **Select:** Type the number of the game you want.
+-3.  **Download:** Copy the scraped links.
++## Notes
+ 
+-**Note:** Search results are cached locally in `games_cache.json` for 4 hours to speed up subsequent requests.
++- The tool caches scraped results to speed up subsequent lookups; update or clear the cache file to refresh entries.
++- Use responsibly and respect site terms of service.
+diff --git a/app.py b/app.py
+index 7f9fa87..66b2961 100644
+--- a/app.py
++++ b/app.py
+@@ -3,6 +3,7 @@
+ from itertools import groupby
+ 
+ import questionary
++import argparse
+ from rich.console import Console
+ from rich.table import Table
+ from rich.panel import Panel
+@@ -198,5 +199,18 @@ def handle_selection(self, games):
+                 break
+ 
+ if __name__ == "__main__":
++    parser = argparse.ArgumentParser(description="PS PKG Scraper CLI")
++    parser.add_argument("-s", "--search", type=str, help="Immediately search for a game")
++    args = parser.parse_args()
++
+     app = PKGScraperCLI()
+-    app.run()
+\ No newline at end of file
++
++    if args.search:
++        console.print(f"[bold blue]Searching for '{args.search}'...[/bold blue]")
++        games = app.scraper.search_games(args.search)
++        if games:
++            app.handle_selection(games)
++        else:
++            console.print("[bold red]No games found.[/bold red]")
++    else:
++        app.run()
+\ No newline at end of file
+diff --git a/settings.json b/settings.json
+new file mode 100644
+index 0000000..9db5261
+--- /dev/null
++++ b/settings.json
+@@ -0,0 +1,22 @@
++{
++    "scraper": {
++        "base_url": "https://www.superpsx.com/",
++        "timeout": 15,
++        "ignore_domains": [
++            "superpsx", 
++            "facebook", 
++            "twitter", 
++            "discord", 
++            "instagram", 
++            "pinterest", 
++            "youtube", 
++            "telegram", 
++            "wp.com", 
++            "google.com"
++        ]
++    },
++    "database": {
++        "cache_file": "games_cache.json",
++        "cache_ttl": 31536000
++    }
++}
+diff --git a/src/config.py b/src/config.py
+new file mode 100644
+index 0000000..a0915b7
+--- /dev/null
++++ b/src/config.py
+@@ -0,0 +1,42 @@
++import json
++import os
++
++# Default fallback values in case settings.json is missing or corrupt
++DEFAULTS = {
++    "scraper": {
++        "base_url": "https://www.superpsx.com/",
++        "timeout": 15,
++        "ignore_domains": []
++    },
++    "database": {
++        "cache_file": "games_cache.json",
++        "cache_ttl": 31536000
++    }
++}
++
++class Config:
++    def __init__(self, config_path="settings.json"):
++        self.settings = self._load_settings(config_path)
++
++    def _load_settings(self, path):
++        if not os.path.exists(path):
++            print(f"[WARNING] {path} not found. Using defaults.")
++            return DEFAULTS
++        
++        try:
++            with open(path, "r", encoding="utf-8") as f:
++                return json.load(f)
++        except (json.JSONDecodeError, OSError) as e:
++            print(f"[ERROR] Could not load {path}: {e}. Using defaults.")
++            return DEFAULTS
++
++    @property
++    def scraper(self):
++        return self.settings.get("scraper", DEFAULTS["scraper"])
++
++    @property
++    def database(self):
++        return self.settings.get("database", DEFAULTS["database"])
++
++# Create a singleton instance to be imported elsewhere
++cfg = Config()
+diff --git a/src/database.py b/src/database.py
+index 4d30127..3021c0f 100644
+--- a/src/database.py
++++ b/src/database.py
+@@ -2,8 +2,24 @@
+ import os
+ import time
+ 
+-CACHE_FILE = "games_cache.json"
+-CACHE_TTL = 31536000 
++try:
++    from src.config import cfg  # type: ignore
++except Exception:
++    cfg = None
++
++DEFAULT_CACHE_FILE = "games_cache.json"
++DEFAULT_CACHE_TTL = 31536000
++
++if cfg and getattr(cfg, "database", None) is not None:
++    try:
++        CACHE_FILE = cfg.database.get("cache_file", DEFAULT_CACHE_FILE)
++        CACHE_TTL = cfg.database.get("cache_ttl", DEFAULT_CACHE_TTL)
++    except Exception:
++        CACHE_FILE = DEFAULT_CACHE_FILE
++        CACHE_TTL = DEFAULT_CACHE_TTL
++else:
++    CACHE_FILE = DEFAULT_CACHE_FILE
++    CACHE_TTL = DEFAULT_CACHE_TTL
+ 
+ class GameCache:
+     def __init__(self):
+diff --git a/src/scraper.py b/src/scraper.py
+index 1010e1f..5f4cb51 100644
+--- a/src/scraper.py
++++ b/src/scraper.py
+@@ -3,13 +3,19 @@
+ import cloudscraper
+ from bs4 import BeautifulSoup
+ 
+-BASE_URL = "https://www.superpsx.com/"
+ 
+-IGNORE_DOMAINS = [
+-    "superpsx", "facebook", "twitter", "discord", 
++try:
++    from src.config import cfg
++except Exception:
++    cfg = None
++
++DEFAULT_BASE_URL = "https://www.superpsx.com/"
++DEFAULT_IGNORE_DOMAINS = [
++    "superpsx", "facebook", "twitter", "discord",
+     "instagram", "pinterest", "youtube", "telegram",
+     "wp.com", "google.com"
+ ]
++DEFAULT_TIMEOUT = 15
+ 
+ class PSScraper:
+     def __init__(self):
+@@ -20,13 +26,17 @@ def __init__(self):
+                 "mobile": False
+             }
+         )
++        scraper_cfg = getattr(cfg, "scraper", {}) if cfg else {}
++        self.base_url = scraper_cfg.get("base_url", DEFAULT_BASE_URL)
++        self.ignore_domains = scraper_cfg.get("ignore_domains", DEFAULT_IGNORE_DOMAINS)
++        self.timeout = scraper_cfg.get("timeout", DEFAULT_TIMEOUT)
+ 
+     def search_games(self, query):
+         params = {"s": query}
+-        url = f"{BASE_URL}?{urllib.parse.urlencode(params)}"
++        url = f"{self.base_url}?{urllib.parse.urlencode(params)}"
+ 
+         try:
+-            response = self.scraper.get(url, timeout=15)
++            response = self.scraper.get(url, timeout=self.timeout)
+             response.raise_for_status()
+             soup = BeautifulSoup(response.content, "html.parser")
+             
+@@ -35,8 +45,7 @@ def search_games(self, query):
+ 
+             for item in items:
+                 title_node = item.select_one(".penci-entry-title a")
+-                if not title_node:
+-                    continue
++                if not title_node: continue
+ 
+                 img_node = item.select_one(".thumbnail")
+                 image = img_node.get("data-bgset") if img_node else None
+@@ -59,10 +68,9 @@ def _extract_links(self, soup):
+             potential_links = soup.find_all("a", href=True)
+             for link in potential_links:
+                 href = link["href"]
+-                if not any(domain in href.lower() for domain in IGNORE_DOMAINS):
++                if not any(domain in href.lower() for domain in self.ignore_domains):
+                     if href.startswith("http") and len(href) > 15:
+                         links.append(href)
+-
+         except Exception:
+             pass
+         return list(set(links))
+@@ -108,7 +116,7 @@ def _extract_grouped_links(self, soup):
+                     links = content_col.find_all("a", href=True)
+                     for link in links:
+                         href = link["href"]
+-                        if not any(domain in href.lower() for domain in IGNORE_DOMAINS):
++                        if not any(domain in href.lower() for domain in self.ignore_domains):
+                             if href.startswith("http") and len(href) > 15:
+                                 if href not in seen_urls:
+                                     grouped_links.append({
+@@ -197,7 +205,7 @@ def get_game_links(self, game_url, current_size="N/A"):
+         }
+ 
+         try:
+-            resp = self.scraper.get(game_url, timeout=15)
++            resp = self.scraper.get(game_url, timeout=self.timeout)
+             soup = BeautifulSoup(resp.content, "html.parser")
+             
+             self._parse_metadata(soup, metadata)
+@@ -208,7 +216,7 @@ def get_game_links(self, game_url, current_size="N/A"):
+             if dl_node:
+                 try:
+                     dl_url = dl_node["href"]
+-                    dl_resp = self.scraper.get(dl_url, timeout=15)
++                    dl_resp = self.scraper.get(dl_url, timeout=self.timeout)
+                     dl_soup = BeautifulSoup(dl_resp.content, "html.parser")
+                     
+                     self._parse_metadata(dl_soup, metadata)

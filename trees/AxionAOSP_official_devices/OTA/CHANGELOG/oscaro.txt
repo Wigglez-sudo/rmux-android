@@ -1,0 +1,59 @@
+AxionOS v2.8
+Build Date : 05/10/2026
+- Synced with latest source
+- Added Flashlight strength control
+- Introduce BORE scheduler
+- Switch to stock BT stack
+
+AxionOS v2.7
+Build Date : 07/06/2026 (HOTFIX)
+- Synced with latest source
+- Fixes keyboard not opening in some situations (source side)
+
+Build Date : 04/06/2026
+- Synced with latest source
+- Excluded firmware to avoid arb trigger
+- Tweak powerhint for better efficiency
+- Switch to source side task_profiles
+- Increase vibration intensities slightly
+- Improved Lift to wake accuracy
+- Add toggle to disable keyboard vibration
+- Use appropriate charging thresholds in lockscreen info 
+- Few more underhood changes
+- Upstreamed kernel with latest lineage source (qcom8350)
+
+AxionOS v2.5
+Build Date : 21/04/2026
+- Synced with latest source
+- Tweaked haptics for better user-experience
+- Reduced swappiness 100>60
+- Few device side tweaks for power management
+- Reduced default animation speeds to 80%
+- Disabled scroll optimiser temporarily
+- Many source side fixes
+
+Build Date : 12/04/2026
+- Initial QPR2 Build
+- Synced with latest source
+- Drop ViperFX and Included AxionFX
+- Clean Flash mandatory from any previous builds
+
+AxionOS v2.4
+Build Date : 30/01/2026
+- Synced with latest source
+- Merged BPF patches from kernel v5.10
+- Fixed SD-card detection bug
+
+AxionOS v2.3
+Build Date : 19/01/2026
+- Synced with latest source
+- Included OOS camera
+- App drawer delay fixed (source side)
+
+Build Date : 14/01/2026
+- Initial official release based on A16(QPR1)
+- Synced with latest source
+- New DolbyUI implementation
+- Upstream kernel version to v5.4.302
+- Reduce LZ4 memory usage to 1KB
+- Picked some media configs from moto-sm6375

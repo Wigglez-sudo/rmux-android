@@ -1,0 +1,753 @@
+From 0fcee72720d843d308708b590affdcdb6058282a Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Mon, 26 Jan 2026 16:51:41 +0100
+Subject: [PATCH] rework: add passwords and grouping
+
+---
+ app.py          | 291 ++++++++++++++++++++++++++++++++----------------
+ src/database.py | 108 +++++++++---------
+ src/scraper.py  | 285 +++++++++++++++++++++++++++++++++--------------
+ 3 files changed, 445 insertions(+), 239 deletions(-)
+
+diff --git a/app.py b/app.py
+index df1007f..7f9fa87 100644
+--- a/app.py
++++ b/app.py
+@@ -1,109 +1,202 @@
+-"""
+-Main application entry point. Handles user interaction,
+-CLI interface for searching, and orchestration of scraping and storage.
+-"""
+-
+ import sys
+ from urllib.parse import urlparse
++from itertools import groupby
++
++import questionary
++from rich.console import Console
++from rich.table import Table
++from rich.panel import Panel
++from rich.live import Live
++from rich.status import Status
++from rich import box
++from rich.align import Align
++from rich.text import Text
++
++from src.database import GameCache
++from src.scraper import PSScraper
++
++console = Console()
++
++class PKGScraperCLI:
++    def __init__(self):
++        self.db = GameCache()
++        self.scraper = PSScraper()
++        self.db.load()
++
++    def get_host_name(self, url):
++        try:
++            domain = urlparse(url).netloc
++            parts = domain.replace("www.", "").split(".")
++            return parts[0].capitalize() if parts else "Link"
++        except Exception:
++            return "Link"
++
++    def display_game_details(self, game):
++        console.print(Panel(
++            Align.center(f"[bold cyan]{game['title']}[/bold cyan]"), 
++            box=box.ROUNDED, 
++            border_style="cyan",
++            expand=False,
++            padding=(1, 4)
++        ))
++        
++        cached_data = self.db.get(game["url"])
++
++        if cached_data:
++            console.print(" [bold green]✓[/bold green] [italic]Loaded from local cache[/italic]")
++            links = cached_data["links"]
++            metadata = cached_data.get("metadata", {"size": cached_data.get("size", "N/A")})
++        else:
++            with console.status("[bold yellow]Scraping live data...[/bold yellow]", spinner="dots"):
++                links, metadata = self.scraper.get_game_links(game["url"], game["size"])
++                if links:
++                    game["size"] = metadata.get("size", "N/A")
++                    self.db.save(game, links, metadata)
++
++        grid = Table.grid(expand=True, padding=(0, 2))
++        grid.add_column(style="bold white")
++        grid.add_column(style="yellow")
++        grid.add_column(style="bold white")
++        grid.add_column(style="yellow")
++
++        region = metadata.get("region", "N/A")
++        cusa = metadata.get("cusa", "N/A")
++        reg_str = f"{region} ({cusa})" if region != "N/A" and cusa != "N/A" else (cusa if cusa != "N/A" else region)
++
++        grid.add_row("Size:", metadata.get("size", "N/A"), "Version:", metadata.get("version", "N/A"))
++        grid.add_row("Region:", reg_str, "Firmware:", metadata.get("firmware", "N/A"))
++        grid.add_row("Voice:", metadata.get("voice", "N/A"), "Subtitles:", metadata.get("subtitles", "N/A"))
++        
++        console.print(Panel(grid, title="Game Info", title_align="left", border_style="dim", padding=(0, 1)))
++
++        pwd = metadata.get("password")
++        if pwd and pwd.lower() != "n/a":
++             console.print(Panel(f"[bold white]Password: {pwd}[/bold white]", style="bold red", expand=False))
++        
++        console.print("")
+ 
+-from src.database import get_cached_game, init_db, save_to_cache
+-from src.scraper import get_game_links, search_games
+-
+-
+-def get_host_name(url):
+-    try:
+-        domain = urlparse(url).netloc
+-        domain = domain.replace("www.", "").split(".")[0]
+-        return domain.capitalize()
+-    except Exception:
+-        return "Link"
+-
+-
+-def process_selection(game):
+-    print(f"\n--- {game['title']} ---")
+-
+-    cached_data = get_cached_game(game["url"])
+-
+-    if cached_data:
+-        print("[*] Loaded from cache")
+-        links = cached_data["links"]
+-        size = cached_data["size"]
+-    else:
+-        print("[*] Scraping live data (this may take a moment)...")
+-        links, size = get_game_links(game["url"], game["size"])
+         if links:
+-            game["size"] = size
+-            save_to_cache(game, links)
+-
+-    print(f"Size: {size}")
+-
+-    if links:
+-        print("\nDownload Links:")
+-        for link in links:
+-            host = get_host_name(link)
+-            print(f"- [{host}] {link}")
+-    else:
+-        print("No download links found.")
+-    print("-" * 30)
+-
+-
+-def handle_selection_loop(games):
+-    while True:
+-        choice = input(
+-            "\nEnter number to download (or 'back' to search again): "
+-        ).strip()
+-        if choice.lower() in ["back", "b"]:
+-            break
+-
+-        try:
+-            selection_idx = int(choice) - 1
+-            if 0 <= selection_idx < len(games):
+-                process_selection(games[selection_idx])
+-                continue_choice = input(
+-                    "\nSelect another from this list? (y/n): "
+-                ).lower()
+-                if continue_choice != "y":
+-                    break
++            is_grouped = isinstance(links[0], dict)
++
++            if is_grouped:
++                links.sort(key=lambda x: x.get("group", "Misc"))
++                
++                for group_name, group_items in groupby(links, key=lambda x: x.get("group", "Misc")):
++                    table = Table(
++                        title=f"{group_name}", 
++                        title_style="bold magenta", 
++                        show_header=True, 
++                        header_style="bold white",
++                        box=box.SIMPLE,
++                        border_style="bright_black",
++                        expand=True,
++                        collapse_padding=True
++                    )
++                    table.add_column("Type", style="cyan", width=20)
++                    table.add_column("Host", style="yellow", width=15)
++                    table.add_column("URL", style="blue")
++
++                    for item in group_items:
++                        url = item.get("url", "")
++                        label = item.get("label", "Link")
++                        host = self.get_host_name(url)
++                        table.add_row(label, host, url)
++                    
++                    console.print(table)
++                    console.print("")
+             else:
+-                print("Invalid number.")
+-        except ValueError:
+-            print("Please enter a valid number.")
+-
+-
+-def main():
+-    print("=== PS PKG Scraper  ===")
+-    init_db()
+-
+-    while True:
+-        try:
+-            query = input("\nSearch Game (or 'exit' to quit): ").strip()
++                table = Table(
++                    title="Download Mirrors", 
++                    title_style="bold magenta", 
++                    show_header=True, 
++                    header_style="bold white",
++                    box=box.SIMPLE,
++                    border_style="bright_black",
++                    pad_edge=False,
++                    collapse_padding=True
++                )
++                table.add_column("Host", style="cyan", width=15)
++                table.add_column("URL", style="blue")
++
++                sorted_links = sorted(links, key=lambda x: self.get_host_name(x))
++                for link in sorted_links:
++                    table.add_row(self.get_host_name(link), link)
++                
++                console.print(table)
++        else:
++            console.print("[bold red]× No download links found for this entry.[/bold red]")
++        
++        console.print("\n" + "[dim]━[/dim]" * 50 + "\n")
++
++    def run(self):
++        title_text = Text("PS PKG Scraper Pro", style="bold white")
++        subtitle = Text("Interactive Search & Scrape Tool", style="dim")
++        
++        console.print(Panel.fit(
++            Align.center(Text.assemble(title_text, "\n", subtitle)), 
++            border_style="blue",
++            box=box.DOUBLE,
++            padding=(1, 4)
++        ))
++        
++        while True:
++            try:
++                query = questionary.text(
++                    "Search Game (or press Esc to quit):",
++                    instruction="Enter name..."
++                ).ask()
++
++                if query is None or query.lower() in ["exit", "quit", "q"]:
++                    console.print("[yellow]Exiting...[/yellow]")
++                    break
+ 
+-            if query.lower() in ["exit", "quit", "q"]:
+-                print("Goodbye!")
++                if not query.strip():
++                    continue
++
++                with console.status(f"[bold blue]Searching for '{query}'...[/bold blue]", spinner="earth"):
++                    games = self.scraper.search_games(query)
++
++                if not games:
++                    console.print("[bold red]! No games found. Try a different keyword.[/bold red]")
++                    continue
++
++                self.handle_selection(games)
++
++            except KeyboardInterrupt:
++                console.print("\n[bold red]! Operation cancelled.[/bold red]")
++                sys.exit(0)
++            except Exception as e:
++                console.print(f"[bold red]ERROR:[/bold red] {e}")
++
++    def handle_selection(self, games):
++        while True:
++            choices = [f"{i+1}. {g['title']}" for i, g in enumerate(games)]
++            choices.append(questionary.Separator())
++            choices.append("Back to search")
++
++            selected_text = questionary.select(
++                "Select a game:",
++                choices=choices,
++                style=questionary.Style([
++                    ('qmark', 'fg:cyan bold'),
++                    ('question', 'bold'),
++                    ('answer', 'fg:green bold'),
++                    ('pointer', 'fg:cyan bold'),
++                ])
++            ).ask()
++
++            if selected_text == "Back to search" or selected_text is None:
+                 break
+ 
+-            if not query:
+-                continue
+-
+-            print(f"Searching for '{query}'...")
+-            games = search_games(query)
+-
+-            if not games:
+-                print("No games found.")
+-                continue
+-
+-            print(f"\nFound {len(games)} results:")
+-            for idx, game in enumerate(games):
+-                print(f"{idx + 1}. {game['title']}")
+-
+-            handle_selection_loop(games)
+-
+-        except KeyboardInterrupt:
+-            print("\nExiting...")
+-            sys.exit(0)
+-        except Exception as e:
+-            print(f"Error: {e}")
+-
++            try:
++                idx = int(selected_text.split(".")[0]) - 1
++                self.display_game_details(games[idx])
++                
++                if not questionary.confirm("Return to results?").ask():
++                    break
++            except (ValueError, IndexError):
++                break
+ 
+ if __name__ == "__main__":
+-    main()
++    app = PKGScraperCLI()
++    app.run()
+\ No newline at end of file
+diff --git a/src/database.py b/src/database.py
+index 09cac7d..4d30127 100644
+--- a/src/database.py
++++ b/src/database.py
+@@ -1,64 +1,58 @@
+-"""
+-Database persistence layer handling local file caching for game metadata.
+-Manages loading, saving, and checking expiration of cached game details.
+-"""
+-
+ import json
+ import os
+ import time
+ 
+ CACHE_FILE = "games_cache.json"
+-CACHE_TTL = 3153600000
+-_cache: dict = {}
+-
++CACHE_TTL = 31536000 
++
++class GameCache:
++    def __init__(self):
++        self._cache = {}
++
++    def load(self):
++        if os.path.exists(CACHE_FILE):
++            try:
++                with open(CACHE_FILE, "r", encoding="utf-8") as f:
++                    self._cache = json.load(f)
++            except (OSError, json.JSONDecodeError):
++                self._cache = {}
++        else:
++            self._cache = {}
++
++    def get(self, url):
++        data = self._cache.get(url)
++        if not data:
++            return None
++
++        if "metadata" not in data:
++            return None
++
++        meta = data["metadata"]
++        if meta.get("version", "N/A") == "N/A" and meta.get("cusa", "N/A") == "N/A":
++            return None
++            
++        if not data.get("links"):
++            return None
++
++        timestamp = data.get("timestamp", 0)
++        if (time.time() - timestamp) > CACHE_TTL:
++            return None
++
++        return data
++
++    def save(self, game_data, links, metadata):
++        self._cache[game_data["url"]] = {
++            "url": game_data["url"],
++            "title": game_data["title"],
++            "size": metadata.get("size", "N/A"),
++            "downloads": game_data.get("downloads", "N/A"),
++            "links": links,
++            "metadata": metadata,
++            "timestamp": time.time(),
++        }
+ 
+-def init_db():
+-    if os.path.exists(CACHE_FILE):
+         try:
+-            with open(CACHE_FILE, "r", encoding="utf-8") as f:
+-                data = json.load(f)
+-                _cache.clear()
+-                _cache.update(data)
+-            print(f"Local cache loaded ({len(_cache)} items).")
+-        except (OSError, json.JSONDecodeError) as e:
+-            print(f"Error loading cache file: {e}")
+-            _cache.clear()
+-    else:
+-        print("No cache file found. Created new local cache.")
+-        _cache.clear()
+-
+-
+-def get_cached_game(url):
+-    data = _cache.get(url)
+-
+-    if data:
+-        age = time.time() - data.get("timestamp", 0)
+-
+-        if age < CACHE_TTL:
+-            return {
+-                "title": data["title"],
+-                "size": data["size"],
+-                "links": data["links"],
+-                "downloads": data.get("downloads", "N/A"),
+-            }
+-
+-    return None
+-
+-
+-def save_to_cache(game_data, links):
+-    record = {
+-        "url": game_data["url"],
+-        "title": game_data["title"],
+-        "size": game_data["size"],
+-        "downloads": game_data.get("downloads", "N/A"),
+-        "links": links,
+-        "timestamp": time.time(),
+-    }
+-
+-    _cache[game_data["url"]] = record
+-
+-    try:
+-        with open(CACHE_FILE, "w", encoding="utf-8") as f:
+-            json.dump(_cache, f, indent=4)
+-    except OSError as e:
+-        print(f"Failed to save cache to disk: {e}")
++            with open(CACHE_FILE, "w", encoding="utf-8") as f:
++                json.dump(self._cache, f, indent=4)
++        except OSError:
++            pass
+\ No newline at end of file
+diff --git a/src/scraper.py b/src/scraper.py
+index 2636438..1010e1f 100644
+--- a/src/scraper.py
++++ b/src/scraper.py
+@@ -1,106 +1,225 @@
+-"""
+-Scraping module responsible for searching games and extracting download links
+-from the target superpsx website using cloudscraper and BeautifulSoup.
+-"""
+-
+ import re
+ import urllib.parse
+-
+ import cloudscraper
+ from bs4 import BeautifulSoup
+ 
+ BASE_URL = "https://www.superpsx.com/"
+-IGNORE_DOMAINS = ["superpsx", "facebook", "twitter", "discord"]
+-
+-
+-def get_scraper():
+-    return cloudscraper.create_scraper(
+-        browser={"browser": "chrome", "platform": "windows", "mobile": False}
+-    )
+-
+ 
+-def search_games(search_query):
+-    params = {"s": search_query}
+-    url = f"{BASE_URL}?{urllib.parse.urlencode(params)}"
+-
+-    try:
+-        scraper = get_scraper()
+-        response = scraper.get(url, timeout=15)
+-        response.raise_for_status()
++IGNORE_DOMAINS = [
++    "superpsx", "facebook", "twitter", "discord", 
++    "instagram", "pinterest", "youtube", "telegram",
++    "wp.com", "google.com"
++]
++
++class PSScraper:
++    def __init__(self):
++        self.scraper = cloudscraper.create_scraper(
++            browser={
++                "browser": "chrome",
++                "platform": "windows",
++                "mobile": False
++            }
++        )
+ 
+-        soup = BeautifulSoup(response.content, "html.parser")
+-        results = []
++    def search_games(self, query):
++        params = {"s": query}
++        url = f"{BASE_URL}?{urllib.parse.urlencode(params)}"
+ 
+-        items = soup.select("li.grid-style article.item")
++        try:
++            response = self.scraper.get(url, timeout=15)
++            response.raise_for_status()
++            soup = BeautifulSoup(response.content, "html.parser")
++            
++            results = []
++            items = soup.select("article.item")
+ 
+-        for item in items:
+-            title_node = item.select_one("h2.penci-entry-title a")
+-            if not title_node:
+-                continue
++            for item in items:
++                title_node = item.select_one(".penci-entry-title a")
++                if not title_node:
++                    continue
+ 
+-            img_node = item.select_one("div.thumbnail a")
+-            image = img_node.get("data-bgset") if img_node else None
++                img_node = item.select_one(".thumbnail")
++                image = img_node.get("data-bgset") if img_node else None
+ 
+-            results.append(
+-                {
++                results.append({
+                     "title": title_node.get_text(strip=True),
+                     "url": title_node["href"],
+                     "image": image,
+                     "downloads": "N/A",
+                     "size": "N/A",
+-                }
+-            )
+-
+-        return results
+-
+-    except Exception as e:
+-        print(f"Search failed: {e}")
+-        return []
+-
++                })
+ 
+-def _extract_links_from_dl_page(scraper, dl_page_url):
+-    links = []
+-    try:
+-        dl_resp = scraper.get(dl_page_url, timeout=15)
+-        dl_soup = BeautifulSoup(dl_resp.content, "html.parser")
++            return results
++        except Exception:
++            return []
+ 
+-        tables = dl_soup.select("table")
+-        for table in tables:
+-            for link in table.select("a[href]"):
++    def _extract_links(self, soup):
++        links = []
++        try:
++            potential_links = soup.find_all("a", href=True)
++            for link in potential_links:
+                 href = link["href"]
+-                if not any(domain in href for domain in IGNORE_DOMAINS):
+-                    links.append(href)
+-
+-    except Exception as e:
+-        print(f"DL page scraping failed: {e}")
+-    return links
+-
+-
+-def get_game_links(game_url, current_size="N/A"):
+-    scraper = get_scraper()
+-    final_links = []
+-    new_size = current_size
+-
+-    try:
+-        resp = scraper.get(game_url, timeout=15)
+-        soup = BeautifulSoup(resp.content, "html.parser")
++                if not any(domain in href.lower() for domain in IGNORE_DOMAINS):
++                    if href.startswith("http") and len(href) > 15:
++                        links.append(href)
+ 
+-        rows = soup.select("table.has-fixed-layout tr")
+-        for row in rows:
+-            cols = row.find_all("td")
+-            if len(cols) >= 2 and "size" in cols[0].get_text(strip=True).lower():
+-                new_size = cols[1].get_text(strip=True)
+-                break
++        except Exception:
++            pass
++        return list(set(links))
+ 
+-        dl_node = soup.select_one("a:has(img[alt='Download'])") or soup.find(
+-            "a", href=re.compile(r"dll-")
+-        )
+-
+-        if dl_node:
+-            final_links = _extract_links_from_dl_page(scraper, dl_node["href"])
+-
+-        return list(set(final_links)), new_size
++    def _extract_grouped_links(self, soup):
++        grouped_links = []
++        tables = soup.find_all("table")
++        found_structured_links = False
++        seen_urls = set()
+ 
+-    except Exception as e:
+-        print(f"Link extraction failed: {e}")
+-        return [], new_size
++        for table in tables:
++            block_name = "General / Misc"
++            
++            rows = table.find_all("tr")
++            if not rows: continue
++
++            for row in rows:
++                cols = row.find_all("td")
++                if len(cols) >= 2:
++                    header_text = cols[0].get_text(strip=True).lower()
++                    if "version" in header_text:
++                        val = cols[1].get_text(strip=True, separator=" ")
++                        clean_ver = re.sub(r'(?i)thanks?.*', '', val).strip()
++                        clean_ver = re.sub(r'[\u200b-\u200d\uFEFF]', '', clean_ver)
++                        if len(clean_ver) > 3:
++                            block_name = clean_ver
++                        break
++            
++            for row in rows:
++                cols = row.find_all("td")
++                if len(cols) >= 1:
++                    row_label = "Link"
++                    content_col = None
++                    
++                    if len(cols) >= 2:
++                        row_label = cols[0].get_text(strip=True).replace("⇛", "").strip()
++                        content_col = cols[1]
++                    else:
++                        content_col = cols[0]
++                    
++                    if not content_col: continue
++
++                    links = content_col.find_all("a", href=True)
++                    for link in links:
++                        href = link["href"]
++                        if not any(domain in href.lower() for domain in IGNORE_DOMAINS):
++                            if href.startswith("http") and len(href) > 15:
++                                if href not in seen_urls:
++                                    grouped_links.append({
++                                        "group": block_name,
++                                        "label": row_label if row_label else "Download",
++                                        "url": href
++                                    })
++                                    seen_urls.add(href)
++                                    found_structured_links = True
++        
++        if not found_structured_links:
++            raw = self._extract_links(soup)
++            return [{"group": "All Links", "label": "Link", "url": u} for u in raw]
++        
++        return grouped_links
++
++    def _parse_metadata(self, soup, metadata):
++        tables = soup.find_all("table")
++        for table in tables:
++            rows = table.find_all("tr")
++            for row in rows:
++                cols = row.find_all("td")
++                if len(cols) >= 2:
++                    key_raw = cols[0].get_text(strip=True, separator=" ").lower()
++                    key = re.sub(r'[^\w\s]', '', key_raw).strip()
++                    val = cols[1].get_text(strip=True, separator=" ")
++                    
++                    if "size" in key or "tamanho" in key:
++                        metadata["size"] = val
++                    elif "password" in key or "senha" in key:
++                        metadata["password"] = val
++                    elif "version" in key or "versão" in key:
++                        if val.lower() != "n/a":
++                            clean_ver = re.sub(r'(?i)thanks?.*', '', val).strip()
++                            clean_ver = re.sub(r'[\u200b-\u200d\uFEFF]', '', clean_ver)
++                            
++                            curr_ver = metadata.get("version", "N/A")
++                            if curr_ver == "N/A":
++                                metadata["version"] = clean_ver
++                            elif clean_ver not in curr_ver:
++                                metadata["version"] = f"{curr_ver} | {clean_ver}"
++                        
++                        ids = re.findall(r'((?:CUSA|PPSA)\d{5})', val, re.IGNORECASE)
++                        for mid in ids:
++                            mid = mid.upper()
++                            curr_cusa = metadata.get("cusa", "N/A")
++                            if curr_cusa == "N/A":
++                                metadata["cusa"] = mid
++                            elif mid not in curr_cusa:
++                                metadata["cusa"] = f"{curr_cusa}, {mid}"
++                        
++                        found_region = None
++                        if "USA" in val: found_region = "USA"
++                        elif "EUR" in val: found_region = "EUR"
++                        elif "JPN" in val: found_region = "JPN"
++                        elif "ASIA" in val: found_region = "ASIA"
++                        
++                        if found_region:
++                            curr_reg = metadata.get("region", "N/A")
++                            if curr_reg == "N/A":
++                                metadata["region"] = found_region
++                            elif found_region not in curr_reg:
++                                metadata["region"] = f"{curr_reg}, {found_region}"
++
++                    elif "voice" in key:
++                        if metadata["voice"] == "N/A":
++                            metadata["voice"] = val
++                    elif "subtitles" in key or "screen languages" in key:
++                        if metadata["subtitles"] == "N/A":
++                            metadata["subtitles"] = val
++                    elif "firmware" in key or "working" in key or "note" in key:
++                        if "working" in val.lower() or re.search(r'\d+\.xx', val) or re.search(r'\d+\.\d+', val):
++                            metadata["firmware"] = val
++        return metadata
++
++    def get_game_links(self, game_url, current_size="N/A"):
++        metadata = {
++            "size": current_size,
++            "version": "N/A",
++            "region": "N/A",
++            "password": "N/A",
++            "firmware": "N/A",
++            "voice": "N/A",
++            "subtitles": "N/A",
++            "cusa": "N/A"
++        }
++
++        try:
++            resp = self.scraper.get(game_url, timeout=15)
++            soup = BeautifulSoup(resp.content, "html.parser")
++            
++            self._parse_metadata(soup, metadata)
++
++            dl_node = soup.find("a", href=re.compile(r"dll-")) or \
++                      soup.select_one("a:has(img[alt*='Download'])")
++
++            if dl_node:
++                try:
++                    dl_url = dl_node["href"]
++                    dl_resp = self.scraper.get(dl_url, timeout=15)
++                    dl_soup = BeautifulSoup(dl_resp.content, "html.parser")
++                    
++                    self._parse_metadata(dl_soup, metadata)
++                    final_links = self._extract_grouped_links(dl_soup)
++                    
++                    if final_links:
++                        return final_links, metadata
++                except Exception:
++                    pass
++
++            final_links = self._extract_grouped_links(soup)
++            return final_links, metadata
++        except Exception:
++            return [], metadata
+\ No newline at end of file

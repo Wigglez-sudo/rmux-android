@@ -1,0 +1,59 @@
+AxionOS v2.9 EOL
+Buid Date : 15/10/2026
+- Final Android 16 (A16) build
+- Audio: Removed the direct VoIP output, which was causing an issue during WhatsApp/Telegram calls. When a notification arrived during a call, the call audio would be interrupted for a few seconds. (Thanks to ergdev for fixing this ancient bug)
+- Many more improvements and bug fixes!
+- Clean flash is MANDATORY for this release
+
+AxionOS v2.5
+Build Date : 08/04/2026
+- Initial QPR2 build
+- Fixed slow pd charging 
+- Drop dolby 
+- Introduce AxionFX
+- Add charging control 
+- Add saturated color
+- Import media_codecs.xml
+- Many more changes...
+- Clean flash is MANDATORY for this release (blame google)
+
+AxionOS v2.4
+Build Date : 01/02/2026
+- Initial QPR1 build
+- Complete rebased trees over lineageOS sm8150-common
+- Fixed display wake-up issues and UDFPS for replaced screens
+- Lecia and new Dolby included
+- Numerous other changes and fixes (too many to mention in the changelog)
+- Clean flash is MANDATORY for this release
+
+AxionOS v2.2.1
+Build Date : 24/11/2025
+- Switch back to libperfmgr and powerhint changes
+- Rework powerhint for efficiency 
+- Move CarrierConfig to RRO
+- Update CarrierConfig from nabu OS1.0.6.0.TKXMIXM
+- CarrierConfigOverlay: Enable editable_enhanced_4g_lte_bool globally
+- Some minor changes
+
+AxionOS v2.2
+Build Date : 13/11/2025
+- Add scroll optimization 
+- Switch to QCOM perfd
+- Drop lmkd props
+- Switch to slmk
+- improved zram behavior 
+- Enable config_supportDoubleTapWake
+- Switch to aosp telephony packages for Gapps build as well 
+- Switch to OSS audio 
+- Match audio configs/blobs with los common tree
+- Drop Dolby 
+- Drop Kprofile 
+- Update GPU drivers to 797 from mozoid
+- Sort proprietary-files list
+
+AxionOS v2.1
+Build Date : 17/10/2025
+- Synced with latest source
+- Leica and Dolby included
+- Disable vulkan ui renderer
+- some minor changes

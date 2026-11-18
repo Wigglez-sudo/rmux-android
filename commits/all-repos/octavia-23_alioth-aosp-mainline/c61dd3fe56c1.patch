@@ -1,0 +1,51 @@
+From c61dd3fe56c124a379e4fa2214b6b045924a9fa0 Mon Sep 17 00:00:00 2001
+From: Armandas Kvietkus <armandas.kvietkus@proton.me>
+Date: Mon, 9 Nov 2026 07:56:46 +0000
+Subject: [PATCH] arm64: dts: qcom: sm8250-xiaomi-alioth: Add AW8697 haptic
+ node
+
+---
+ .../boot/dts/qcom/sm8250-xiaomi-alioth.dts    | 23 +++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
+index 4652c6241..f9afbf43e 100644
+--- a/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
++++ b/arch/arm64/boot/dts/qcom/sm8250-xiaomi-alioth.dts
+@@ -775,6 +775,21 @@
+ 	};
+ };
+ 
++&i2c11 {
++	status = "okay";
++
++	vibrator@5a {
++		compatible = "awinic,aw8697";
++		reg = <0x5a>;
++
++		interrupts-extended = <&tlmm 129 IRQ_TYPE_EDGE_FALLING>;
++		reset-gpios = <&tlmm 130 GPIO_ACTIVE_LOW>;
++
++		pinctrl-0 = <&aw8697_int_default>;
++		pinctrl-names = "default";
++	};
++};
++
+ &i2c15 {
+ 	clock-frequency = <100000>;
+ 	status = "okay";
+@@ -1121,6 +1136,14 @@
+ &tlmm {
+ 	gpio-reserved-ranges = <28 4>, <40 4>;
+ 
++	aw8697_int_default: aw8697-int-default-state {
++		pins = "gpio129";
++		function = "gpio";
++		drive-strength = <2>;
++		bias-pull-up;
++	};
++
++
+ 	tert_tdm_active: tert-tdm-active-state {
+ 		sck-pins {
+ 			pins = "gpio133";

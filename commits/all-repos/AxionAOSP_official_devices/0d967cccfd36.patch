@@ -1,0 +1,54 @@
+From 0d967cccfd36450d510ad8802ee5d942dbf28e53 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Wed, 14 May 2025 09:56:51 -0700
+Subject: [PATCH] pipa : update
+
+---
+ OTA/GMS/pipa.json     | 10 +++++-----
+ OTA/VANILLA/pipa.json | 10 +++++-----
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/OTA/GMS/pipa.json b/OTA/GMS/pipa.json
+index 9b67b7b9..61e269ad 100644
+--- a/OTA/GMS/pipa.json
++++ b/OTA/GMS/pipa.json
+@@ -1,12 +1,12 @@
+ {
+     "response": [
+         {
+-            "datetime": 1747067247,
+-            "filename": "axion-1.4-NIGHTLY-20250512-OFFICIAL-GMS-pipa.zip",
+-            "id": "cd944fb9e7d344f5ae7cea6cd38f5f9a",
++            "datetime": 1747240159,
++            "filename": "axion-1.4-NIGHTLY-20250514-OFFICIAL-GMS-pipa.zip",
++            "id": "bcd5fc93744b74aaf66031e76df23e22",
+             "romtype": "OFFICIAL",
+-            "size": 1850566583,
+-            "url": "https://github.com/rmuxnet/Axion-PIPA/releases/download/axion-1.4-NIGHTLY-20250512-OFFICIAL/axion-1.4-NIGHTLY-20250512-OFFICIAL-GMS-pipa.zip",
++            "size": 1850633056,
++            "url": "https://github.com/rmuxnet/Axion-PIPA/releases/download/axion-1.4-NIGHTLY-20250514-OFFICIAL/axion-1.4-NIGHTLY-20250514-OFFICIAL-GMS-pipa.zip",
+             "version": "1.4"
+         }
+     ]
+diff --git a/OTA/VANILLA/pipa.json b/OTA/VANILLA/pipa.json
+index 35cc1ccd..a60365c6 100644
+--- a/OTA/VANILLA/pipa.json
++++ b/OTA/VANILLA/pipa.json
+@@ -1,12 +1,12 @@
+ {
+     "response": [
+         {
+-            "datetime": 1747067854,
+-            "filename": "axion-1.4-NIGHTLY-20250512-OFFICIAL-VANILLA-pipa.zip",
+-            "id": "9bcbe148920a82f56fd31a5eb94e9b1a",
++            "datetime": 1747240909,
++            "filename": "axion-1.4-NIGHTLY-20250514-OFFICIAL-VANILLA-pipa.zip",
++            "id": "76a1eaddda933c9c042b4a203dd3447a",
+             "romtype": "OFFICIAL",
+-            "size": 1453082126,
+-            "url": "https://github.com/rmuxnet/Axion-PIPA/releases/download/axion-1.4-NIGHTLY-20250512-OFFICIAL/axion-1.4-NIGHTLY-20250512-OFFICIAL-VANILLA-pipa.zip",
++            "size": 1453120019,
++            "url": "https://github.com/rmuxnet/Axion-PIPA/releases/download/axion-1.4-NIGHTLY-20250514-OFFICIAL/axion-1.4-NIGHTLY-20250514-OFFICIAL-VANILLA-pipa.zip",
+             "version": "1.4"
+         }
+     ]

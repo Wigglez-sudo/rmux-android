@@ -1,0 +1,672 @@
+From bfde955d14c98f26a08fe2702256ba8e6e433a12 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Mon, 31 Mar 2025 11:33:23 +0100
+Subject: [PATCH] update : unified json fetching
+
+for better automation for the website/bot
+---
+ OTA/device_images.json | 156 ---------------------
+ OTA/devices.json       | 182 -------------------------
+ dinfo.json             | 302 +++++++++++++++++++++++++++++++++++------
+ 3 files changed, 262 insertions(+), 378 deletions(-)
+ delete mode 100644 OTA/device_images.json
+ delete mode 100644 OTA/devices.json
+
+diff --git a/OTA/device_images.json b/OTA/device_images.json
+deleted file mode 100644
+index 29371bc..0000000
+--- a/OTA/device_images.json
++++ /dev/null
+@@ -1,156 +0,0 @@
+-{
+-  "devices": [
+-    {
+-      "codename": "oriole",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/oriole.png"
+-    },
+-    {
+-      "codename": "bluejay",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/bluejay.png"
+-    },
+-    {
+-      "codename": "raven",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/raven.png"
+-    },
+-    {
+-      "codename": "lynx",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/lynx.png"
+-    },
+-    {
+-      "codename": "panther",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/panther.png"
+-    },
+-    {
+-      "codename": "cheetah",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/cheetah.png"
+-    },
+-    {
+-      "codename": "akita",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/akita.png"
+-    },
+-    {
+-      "codename": "shiba",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/shiba.png"
+-    },
+-    {
+-      "codename": "husky",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/husky.png"
+-    },
+-    {
+-      "codename": "tokay",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/tokay.png"
+-    },
+-    {
+-      "codename": "caiman",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/caiman.png"
+-    },
+-    {
+-      "codename": "komodo",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/komodo.png"
+-    },
+-    {
+-      "codename": "a71",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a71.jpg"
+-    },
+-    {
+-      "codename": "pipa",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-pad6.jpg"
+-    },
+-    {
+-      "codename": "cancunf",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g54.jpg"
+-    },
+-    {
+-      "codename": "beryllium",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/beryllium.png"
+-    },
+-    {
+-      "codename": "alioth",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/alioth.png"
+-    },
+-    {
+-      "codename": "marble",
+-      "imageUrl": "https://i.postimg.cc/3NP59Rrg/1000003700.png"
+-    },
+-    {
+-      "codename": "peridot",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-f6.jpg"
+-    },
+-    {
+-      "codename": "vermeer",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-f6-pro.jpg"
+-    },
+-    {
+-      "codename": "vayu",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/vayu.png"
+-    },
+-    {
+-      "codename": "veux",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-11-pro-5g-global.jpg"
+-    },
+-    {
+-      "codename": "duchamp",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-k70e.jpg"
+-    },
+-    {
+-      "codename": "begonia",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-8-pro-.jpg"
+-    },
+-    {
+-      "codename": "sweet",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/sweet.png"
+-    },
+-    {
+-      "codename": "socrates",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/socrates.png"
+-    },
+-    {
+-      "codename": "LG8n",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/pics/tecno/tecno-pova4-pro-1.jpg"
+-    },
+-    {
+-      "codename": "LG7n",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/pics/tecno/tecno-pova4-1.jpg"
+-    },
+-    {
+-      "codename": "bitra",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/realme-gt-neo2.jpg"
+-    },
+-    {
+-      "codename": "r5x",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/realme-5i.jpg"
+-    },
+-    {
+-      "codename": "spartan",
+-      "imageUrl": "https://i.postimg.cc/ncJDcTFs/original-imaghyc7gkgg6qzf.webp"
+-    },
+-    {
+-      "codename": "surya",
+-      "imageUrl": "https://i01.appmifile.com/webfile/globalimg/products/pc/poco-x3-nfc/specs-header.png"
+-    },
+-    {
+-      "codename": "instantnoodle",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/instantnoodle.png"
+-    },
+-    {
+-      "codename": "instantnoodlep",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/instantnoodlep.png"
+-    },
+-    {
+-      "codename": "kebab",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/kebab.png"
+-    },
+-    {
+-      "codename": "lemonades",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/lemonades.png"
+-    },
+-    {
+-      "codename": "munch",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/munch.png"
+-    },
+-    {
+-      "codename": "davinci",
+-      "imageUrl": "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-mi-9t-0.jpg"
+-    }
+-  ]
+-}
+diff --git a/OTA/devices.json b/OTA/devices.json
+deleted file mode 100644
+index 9dd0600..0000000
+--- a/OTA/devices.json
++++ /dev/null
+@@ -1,182 +0,0 @@
+-{
+-  "oriole": {
+-    "device_name": "Google Pixel 6",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "bluejay": {
+-    "device_name": "Google Pixel 6a",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "raven": {
+-    "device_name": "Google Pixel 6 Pro",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "lynx": {
+-    "device_name": "Google Pixel 7a",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "panther": {
+-    "device_name": "Google Pixel 7",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "cheetah": {
+-    "device_name": "Google Pixel 7 Pro",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "akita": {
+-    "device_name": "Google Pixel 8a",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "shiba": {
+-    "device_name": "Google Pixel 8",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "husky": {
+-    "device_name": "Google Pixel 8 Pro",
+-    "maintainer": "rmp22",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "tokay": {
+-    "device_name": "Google Pixel 9",
+-    "maintainer": "Itachi",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "caiman": {
+-    "device_name": "Google Pixel 9 Pro",
+-    "maintainer": "Itachi",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "komodo": {
+-    "device_name": "Google Pixel 9 Pro XL",
+-    "maintainer": "Itachi",
+-    "support_group": "https://t.me/AxionAOSP_PixelsSupport"
+-  },
+-  "a71": {
+-    "device_name": "Galaxy A71 4G",
+-    "maintainer": "rmux",
+-    "support_group": "https://t.me/+EIxj3VlCCxA2YmU0"
+-  },
+-  "cancunf": {
+-    "device_name": "Motorola G54",
+-    "maintainer": "Ayan",
+-    "support_group": "https://t.me/ayanot69"
+-  },
+-  "instantnoodle": {
+-    "device_name": "Oneplus 8",
+-    "maintainer": "Itachi",
+-    "support_group": "https://t.me/ItachiRomSupport"
+-  },
+-  "instantnoodlep": {
+-    "device_name": "Oneplus 8 Pro",
+-    "maintainer": "Itachi",
+-    "support_group": "https://t.me/ItachiRomSupport"
+-  },
+-  "kebab": {
+-    "device_name": "Oneplus 8T",
+-    "maintainer": "Itachi",
+-    "support_group": "https://t.me/ItachiRomSupport"
+-  },
+-  "lemonades": {
+-    "device_name": "Oneplus 9R",
+-    "maintainer": "Itachi",
+-    "support_group": "https://t.me/ItachiRomSupport"
+-  },
+-  "beryllium": {
+-    "device_name": "POCO F1",
+-    "maintainer": "Rve",
+-    "support_group": "https://t.me/rvosuniverse"
+-  },
+-  "alioth": {
+-    "device_name": "Redmi K40/POCO F3/Mi 11X",
+-    "maintainer": "ꜱᴀɴᴊɪ | サンジ",
+-    "support_group": "https://t.me/sanjissupport"
+-  },
+-  "munch": {
+-    "device_name": "Redmi K40S/POCO F4",
+-    "maintainer": "masarou",
+-    "support_group": "https://t.me/masarou7A"
+-  },
+-  "marble": {
+-    "device_name": "POCO F5",
+-    "maintainer": "Pabloescobar",
+-    "support_group": "https://t.me/pablo_laboratory"
+-  },
+-  "peridot": {
+-    "device_name": "POCO F6",
+-    "maintainer": "Drenzzz.",
+-    "support_group": "https://t.me/drenzzzdiscuzz"
+-  },
+-  "vermeer": {
+-    "device_name": "POCO F6 PRO",
+-    "maintainer": "Lunark",
+-    "support_group": "https://t.me/PocoF6ProSupport"
+-  },
+-  "veux": {
+-    "device_name": "POCO X4 PRO 5G",
+-    "maintainer": "amritokun",
+-    "support_group": "https://t.me/veuxplayground"
+-  },
+-  "duchamp": {
+-    "device_name": "POCO X6 Pro 5G",
+-    "maintainer": "zenin1504",
+-    "support_group": "https://t.me/zeninlounge"
+-  },
+-  "r5x": {
+-    "device_name": "Realme 5 series",
+-    "maintainer": "Amritorock",
+-    "support_group": "https://t.me/Realme5Dev"
+-  },
+-  "begonia": {
+-    "device_name": "Redmi Note 8 Pro",
+-    "maintainer": "Saikrishna",
+-    "support_group": "https://t.me/sai26918"
+-  },
+-  "sweet": {
+-    "device_name": "Redmi Note 10 Pro",
+-    "maintainer": "donjohanliebert",
+-    "support_group": "https://t.me/donjohanliebert_sg"
+-  },
+-  "socrates": {
+-    "device_name": "Redmi K60 Pro",
+-    "maintainer": "donjohanliebert",
+-    "support_group": "https://t.me/donjohanliebert_sg"
+-  },
+-  "LG8n": {
+-    "device_name": "TECNO POVA 4 Pro",
+-    "maintainer": "Shirayuki39",
+-    "support_group": "https://t.me/shirayuki428sg"
+-  },
+-  "LG7n": {
+-    "device_name": "TECNO POVA 4",
+-    "maintainer": "Shirayuki39",
+-    "support_group": "https://t.me/shirayuki428sg"
+-  },
+-  "pipa": {
+-    "device_name": "Xiaomi Pad 6",
+-    "maintainer": "Abdulwahab_(ai94iq)",
+-    "support_group": "https://t.me/mipad6"
+-  },
+-  "surya": {
+-    "device_name": "POCO X3 NFC",
+-    "maintainer": "Skyy丨アラタ",
+-    "support_group": "https://t.me/ArataXDummy"
+-  },
+-  "spartan": {
+-    "device_name": "Realme GT Neo 3T",
+-    "maintainer": "Ryuk",
+-    "support_group": "https://t.me/ryukftw9"
+-  }
+-  "davinci": {
+-    "device_name": "Mi 9T",
+-    "maintainer": "superxorn",
+-    "support_group": "https://t.me/superxorn"
+-  }
+-}
+diff --git a/dinfo.json b/dinfo.json
+index 009afdf..73f198e 100644
+--- a/dinfo.json
++++ b/dinfo.json
+@@ -1,41 +1,263 @@
+ {
+-    "devices": [
+-      { "device": "Google Pixel 6", "codename": "oriole", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 6a", "codename": "bluejay", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 6 Pro", "codename": "raven", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 7a", "codename": "lynx", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 7", "codename": "panther", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 7 Pro", "codename": "cheetah", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 8a", "codename": "akita", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 8", "codename": "shiba", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 8 Pro", "codename": "husky", "maintainer": "rmp22" },
+-      { "device": "Google Pixel 9", "codename": "tokay", "maintainer": "manid_reddy" },
+-      { "device": "Google Pixel 9 Pro", "codename": "caiman", "maintainer": "manid_reddy" },
+-      { "device": "Google Pixel 9 Pro XL", "codename": "komodo", "maintainer": "nivlafx" },
+-      { "device": "Galaxy A71 4G", "codename": "a71", "maintainer": "rmux" },
+-      { "device": "Mi 9T", "codename": "davinci", "maintainer": "Steven (superxorn)" },
+-      { "device": "Motorola G54", "codename": "cancunf", "maintainer": "Ayan" },
+-      { "device": "Oneplus 8", "codename": "instantnoodle", "maintainer": "Itachi" },
+-      { "device": "Oneplus 8 Pro", "codename": "instantnoodlep", "maintainer": "Itachi" },
+-      { "device": "Oneplus 8T", "codename": "kebab", "maintainer": "Itachi" },
+-      { "device": "Oneplus 9R", "codename": "lemonades", "maintainer": "Itachi" },
+-      { "device": "POCO F1", "codename": "beryllium", "maintainer": "Rve" },
+-      { "device": "POCO F3/Mi 11X/Redmi K40", "codename": "alioth", "maintainer": "ꜱᴀɴᴊɪ | サンジ" },
+-      { "device": "POCO F4/Redmi K40S", "codename": "munch", "maintainer": "masarou" },
+-      { "device": "POCO F5", "codename": "marble", "maintainer": "Pabloescobar" },
+-      { "device": "POCO F6", "codename": "peridot", "maintainer": "Drenzzz." },
+-      { "device": "POCO F6 PRO", "codename": "vermeer", "maintainer": "Lunark" },
+-      { "device": "POCO X3 NFC", "codename": "surya", "maintainer": "Skyy丨アラタ" },
+-      { "device": "POCO X4 PRO 5G", "codename": "veux", "maintainer": "amritokun" },
+-      { "device": "POCO X6 Pro 5G", "codename": "duchamp", "maintainer": "zenin1504" },
+-      { "device": "Realme 5 series", "codename": "r5x", "maintainer": "Amritorock" },
+-      { "device": "Realme GT Neo 3T", "codename": "spartan", "maintainer": "Ryuk" },
+-      { "device": "Redmi Note 8 Pro", "codename": "begonia", "maintainer": "Saikrishna" },
+-      { "device": "Redmi Note 10 Pro", "codename": "sweet", "maintainer": "donjohanliebert" },
+-      { "device": "Redmi Note 11 Pro Series", "codename": "veux", "maintainer": "amritokun" },
+-      { "device": "Redmi K60 Pro", "codename": "socrates", "maintainer": "donjohanliebert" },
+-      { "device": "TECNO POVA 4 Pro", "codename": "LG8n", "maintainer": "Shirayuki39" },
+-      { "device": "TECNO POVA 4", "codename": "LG7n", "maintainer": "Shirayuki39" },
+-      { "device": "Xiaomi Pad 6", "codename": "pipa", "maintainer": "Abdulwahab (ai94iq)" }
+-    ]
+-  }
++  "devices": [
++    {
++      "device_name": "Google Pixel 6",
++      "codename": "oriole",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/oriole.png"
++    },
++    {
++      "device_name": "Google Pixel 6a",
++      "codename": "bluejay",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/bluejay.png"
++    },
++    {
++      "device_name": "Google Pixel 6 Pro",
++      "codename": "raven",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/raven.png"
++    },
++    {
++      "device_name": "Google Pixel 7a",
++      "codename": "lynx",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/lynx.png"
++    },
++    {
++      "device_name": "Google Pixel 7",
++      "codename": "panther",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/panther.png"
++    },
++    {
++      "device_name": "Google Pixel 7 Pro",
++      "codename": "cheetah",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/cheetah.png"
++    },
++    {
++      "device_name": "Google Pixel 8a",
++      "codename": "akita",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/akita.png"
++    },
++    {
++      "device_name": "Google Pixel 8",
++      "codename": "shiba",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/shiba.png"
++    },
++    {
++      "device_name": "Google Pixel 8 Pro",
++      "codename": "husky",
++      "maintainer": "rmp22",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/husky.png"
++    },
++    {
++      "device_name": "Google Pixel 9",
++      "codename": "tokay",
++      "maintainer": "manid_reddy",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/tokay.png"
++    },
++    {
++      "device_name": "Google Pixel 9 Pro",
++      "codename": "caiman",
++      "maintainer": "manid_reddy",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/caiman.png"
++    },
++    {
++      "device_name": "Google Pixel 9 Pro XL",
++      "codename": "komodo",
++      "maintainer": "nivlafx",
++      "support_group": "https://t.me/AxionAOSP_PixelsSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/komodo.png"
++    },
++    {
++      "device_name": "Galaxy A71 4G",
++      "codename": "a71",
++      "maintainer": "rmux",
++      "support_group": "https://t.me/+EIxj3VlCCxA2YmU0",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a71.jpg"
++    },
++    {
++      "device_name": "Mi 9T",
++      "codename": "davinci",
++      "maintainer": "Steven (superxorn)",
++      "support_group": "https://t.me/superxorn",
++      "image_url": "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-mi-9t-0.jpg"
++    },
++    {
++      "device_name": "Motorola G54",
++      "codename": "cancunf",
++      "maintainer": "Ayan",
++      "support_group": "https://t.me/ayanot69",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g54.jpg"
++    },
++    {
++      "device_name": "Oneplus 8",
++      "codename": "instantnoodle",
++      "maintainer": "Itachi",
++      "support_group": "https://t.me/ItachiRomSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/instantnoodle.png"
++    },
++    {
++      "device_name": "Oneplus 8 Pro",
++      "codename": "instantnoodlep",
++      "maintainer": "Itachi",
++      "support_group": "https://t.me/ItachiRomSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/instantnoodlep.png"
++    },
++    {
++      "device_name": "Oneplus 8T",
++      "codename": "kebab",
++      "maintainer": "Itachi",
++      "support_group": "https://t.me/ItachiRomSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/kebab.png"
++    },
++    {
++      "device_name": "Oneplus 9R",
++      "codename": "lemonades",
++      "maintainer": "Itachi",
++      "support_group": "https://t.me/ItachiRomSupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/lemonades.png"
++    },
++    {
++      "device_name": "POCO F1",
++      "codename": "beryllium",
++      "maintainer": "Rve",
++      "support_group": "https://t.me/rvosuniverse",
++      "image_url": "https://wiki.lineageos.org/images/devices/beryllium.png"
++    },
++    {
++      "device_name": "POCO F3/Mi 11X/Redmi K40",
++      "codename": "alioth",
++      "maintainer": "ꜱᴀɴᴊɪ | サンジ",
++      "support_group": "https://t.me/sanjissupport",
++      "image_url": "https://wiki.lineageos.org/images/devices/alioth.png"
++    },
++    {
++      "device_name": "POCO F4/Redmi K40S",
++      "codename": "munch",
++      "maintainer": "masarou",
++      "support_group": "https://t.me/masarou7A",
++      "image_url": "https://wiki.lineageos.org/images/devices/munch.png"
++    },
++    {
++      "device_name": "POCO F5",
++      "codename": "marble",
++      "maintainer": "Pabloescobar",
++      "support_group": "https://t.me/pablo_laboratory",
++      "image_url": "https://i.postimg.cc/3NP59Rrg/1000003700.png"
++    },
++    {
++      "device_name": "POCO F6",
++      "codename": "peridot",
++      "maintainer": "Drenzzz.",
++      "support_group": "https://t.me/drenzzzdiscuzz",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-f6.jpg"
++    },
++    {
++      "device_name": "POCO F6 PRO",
++      "codename": "vermeer",
++      "maintainer": "Lunark",
++      "support_group": "https://t.me/PocoF6ProSupport",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-f6-pro.jpg"
++    },
++    {
++      "device_name": "POCO X3 NFC",
++      "codename": "surya",
++      "maintainer": "Skyy丨アラタ",
++      "support_group": "https://t.me/ArataXDummy",
++      "image_url": "https://i01.appmifile.com/webfile/globalimg/products/pc/poco-x3-nfc/specs-header.png"
++    },
++    {
++      "device_name": "POCO X4 PRO 5G",
++      "codename": "veux",
++      "maintainer": "amritokun",
++      "support_group": "https://t.me/veuxplayground",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-11-pro-5g-global.jpg"
++    },
++    {
++      "device_name": "POCO X6 Pro 5G",
++      "codename": "duchamp",
++      "maintainer": "zenin1504",
++      "support_group": "https://t.me/zeninlounge",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-k70e.jpg"
++    },
++    {
++      "device_name": "Realme 5 series",
++      "codename": "r5x",
++      "maintainer": "Amritorock",
++      "support_group": "https://t.me/Realme5Dev",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/realme-5i.jpg"
++    },
++    {
++      "device_name": "Realme GT Neo 3T",
++      "codename": "spartan",
++      "maintainer": "Ryuk",
++      "support_group": "https://t.me/ryukftw9",
++      "image_url": "https://i.postimg.cc/ncJDcTFs/original-imaghyc7gkgg6qzf.webp"
++    },
++    {
++      "device_name": "Redmi Note 8 Pro",
++      "codename": "begonia",
++      "maintainer": "Saikrishna",
++      "support_group": "https://t.me/sai26918",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-8-pro-.jpg"
++    },
++    {
++      "device_name": "Redmi Note 10 Pro",
++      "codename": "sweet",
++      "maintainer": "donjohanliebert",
++      "support_group": "https://t.me/donjohanliebert_sg",
++      "image_url": "https://wiki.lineageos.org/images/devices/sweet.png"
++    },
++    {
++      "device_name": "Redmi Note 11 Pro Series",
++      "codename": "veux",
++      "maintainer": "amritokun",
++      "support_group": "https://t.me/veuxplayground",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-note-11-pro-5g-global.jpg"
++    },
++    {
++      "device_name": "Redmi K60 Pro",
++      "codename": "socrates",
++      "maintainer": "donjohanliebert",
++      "support_group": "https://t.me/donjohanliebert_sg",
++      "image_url": "https://wiki.lineageos.org/images/devices/socrates.png"
++    },
++    {
++      "device_name": "TECNO POVA 4 Pro",
++      "codename": "LG8n",
++      "maintainer": "Shirayuki39",
++      "support_group": "https://t.me/shirayuki428sg",
++      "image_url": "https://fdn2.gsmarena.com/vv/pics/tecno/tecno-pova4-pro-1.jpg"
++    },
++    {
++      "device_name": "TECNO POVA 4",
++      "codename": "LG7n",
++      "maintainer": "Shirayuki39",
++      "support_group": "https://t.me/shirayuki428sg",
++      "image_url": "https://fdn2.gsmarena.com/vv/pics/tecno/tecno-pova4-1.jpg"
++    },
++    {
++      "device_name": "Xiaomi Pad 6",
++      "codename": "pipa",
++      "maintainer": "Abdulwahab (ai94iq)",
++      "support_group": "https://t.me/mipad6",
++      "image_url": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-pad6.jpg"
++    }
++  ]
++}

@@ -1,0 +1,13 @@
+{
+    "response": [
+        {
+            "datetime": 1749732792,
+            "filename": "axion-1.5-NIGHTLY-20250612-OFFICIAL-GMS-raven.zip",
+            "id": "807f57fdac92ba186b1987d751521490",
+            "romtype": "OFFICIAL",
+            "size": 1821912932,
+            "url": "https://github.com/AxionAOSP/AxionOS_Pixels/releases/download/1.5-Q2/axion-1.5-NIGHTLY-20250612-OFFICIAL-GMS-raven.zip",
+            "version": "1.5"
+        }
+    ]
+}

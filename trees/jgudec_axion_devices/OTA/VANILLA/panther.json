@@ -1,0 +1,13 @@
+{
+    "response": [
+        {
+            "datetime": 1749727703,
+            "filename": "axion-1.5-NIGHTLY-20250612-OFFICIAL-VANILLA-panther.zip",
+            "id": "6b45f9f0446b646c481a2b3543a746d8",
+            "romtype": "OFFICIAL",
+            "size": 1593064445,
+            "url": "https://github.com/AxionAOSP/AxionOS_Pixels/releases/download/1.5-Q2/axion-1.5-NIGHTLY-20250612-OFFICIAL-VANILLA-panther.zip",
+            "version": "1.5"
+        }
+    ]
+}

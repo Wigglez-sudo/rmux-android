@@ -1,0 +1,18 @@
+From 18e597074e91393f9cc13a6bae6e9d785deadfcb Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Mon, 26 Jan 2026 16:50:56 +0100
+Subject: [PATCH] Add .gitignore to exclude __pycache__ directory
+
+Added a .gitignore file to prevent tracking of Python bytecode cache files in the src/__pycache__ directory.
+---
+ .gitignore | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 .gitignore
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..786ffc4
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1 @@
++/src/__pycache__

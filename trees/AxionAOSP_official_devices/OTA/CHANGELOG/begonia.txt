@@ -1,0 +1,109 @@
+AxionOS v2.9 - EOL
+Build Date : 22/10/2026
+- Imported Stock MiuiCamera
+- Fixed VoWifi / Vilte 
+- Fixed HDR playback
+- Fixed Notification LED timer
+- Ported C2 from S vendor rosemary (u dont need to flash playback fix anymore)
+- Improved Scrolling Smoothness
+- Included Kaeru modified lk (Spoofs bl as locked by default | Open settings > Personalize > Essential > pif > fetch pif ..u will get Basic + Device integrity )
+
+AxionOS v2.7_BETA
+Build Date : 06/06/2026
+- Fixed EngineerMode
+- Memory reclaim kernel tweaks
+- Small Misc changes
+
+AxionOS v2.6
+Build Date : 21/05/2026
+- Initial QPR2 Build
+- Included AxionFx
+
+AxionOS v2.4
+Build Date : 28/02/2026
+- Enabled Blurs (if u feel lag disable them via display settings)
+- Sync LunarisDolby
+- Apply dex2oat optimizations
+- Fixed certain tiles getting auto turn on over reboot/sui restart
+
+AxionOS v2.4
+Build Date : 27/01/2026
+- Disable high performance transitions
+- Removed Useless dailer overlays
+- Fixed sound/ringtone of the incoming call in wired headset or bluetooth device.
+
+AxionOS v2.3
+Build Date : 11/01/2026
+- Initial QPR1 release 
+- Switch to IR AIDL HAL
+- Disable gl backpressure
+- Import SF work durations from OP59F7
+- Reworked DT2W Services 
+- Dropped multiple useless blobs
+- use https://t.me/sai_hub/541 for playback fix
+
+AxionOS v2.2.1 - DEC
+Build Date : 19/12/2025
+- December Security patch 
+- Tiktok crash fixed
+- use https://t.me/sai_hub/410 for playback fix
+
+AxionOS v2.2.1
+Build Date : 24/11/2025
+- Fixed Lockscreen status bar 
+- use https://t.me/sai_hub/410 for playback fix
+
+AxionOS v2.2
+Build Date : 11/11/2025
+- Fixed USB tethering
+- Enabled ScrollOptimizer
+- Dropped unwanted blobs
+- Disabled few more loggers
+
+AxionOS v2.1
+Build Date : 14/10/2025
+- Enabled UFFD GC Support (Memory management related)
+- Switch to NCM USB tethering
+- Disabled Few more unwanted loggers
+- More Misc changes
+
+AxionOS v1.6 - HOTFIX
+Build Date : 29/06/2025
+- Fixed CPU Freq stuck on certain tasks
+- Added bypass charging (need testing)
+- Use HintManager for HWUI
+- Drop debug.sf.disable_client_composition_cache 
+- Configure CPUsets
+
+AxionOS v1.6
+Build Date : 20/06/2025
+- Final A15 Build
+- Silence HWUI logspam
+- Shut hwcomposer spam
+- Added Few More bpf patches
+- Few More misc changes
+
+AxionOS v1.5
+Build Date : 14/06/2025
+- Imported Missing Camera Library
+- Added more bpf patches
+- More misc changes
+
+AxionOS v1.4
+Build Date : 25/05/2025
+- Built Common FMRadio
+- Move to OSS Libfmjni
+- Improved DT2W services using Xiaomi-touch
+- Dropped unused 64-bit Audio blobs
+- Dropped unused 32-bit Bluetooth blobs
+- Dropped unused 32-bit Camera blobs
+- Move to Lineage light hal
+- Included Latest PoWeR Kernel
+
+AxionOS v1.3
+Build Date : 18/04/2025
+- Included Los apps
+- Optimized native executables
+- Imported audio policy volumes from AOSP
+- Enabled LTO and inline optimization
+- Many other Misc changes in kernel

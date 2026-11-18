@@ -1,0 +1,33 @@
+From 66dbc52b8b18a8a1f845f4edb4da2606841515b2 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Sun, 30 Mar 2025 19:35:12 +0200
+Subject: [PATCH] update : updated pipa (xioami pad 6) image
+
+---
+ OTA/device_images.json | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/OTA/device_images.json b/OTA/device_images.json
+index 6ed8d793..29371bc5 100644
+--- a/OTA/device_images.json
++++ b/OTA/device_images.json
+@@ -52,6 +52,10 @@
+       "codename": "a71",
+       "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a71.jpg"
+     },
++    {
++      "codename": "pipa",
++      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-pad6.jpg"
++    },
+     {
+       "codename": "cancunf",
+       "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g54.jpg"
+@@ -143,7 +147,7 @@
+     {
+       "codename": "munch",
+       "imageUrl": "https://wiki.lineageos.org/images/devices/munch.png"
+-    }
++    },
+     {
+       "codename": "davinci",
+       "imageUrl": "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-mi-9t-0.jpg"

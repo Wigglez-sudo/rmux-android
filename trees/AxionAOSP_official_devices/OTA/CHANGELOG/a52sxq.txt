@@ -1,0 +1,31 @@
+AxionOS v2.9
+Build Date: 2026/10/12
+- A whole lot of source side changes
+https://github.com/AxionAOSP/axion_changelogs
+
+AxionOS v2.7
+Build Date: 2026/06/05
+- A whole lot of source side changes
+https://github.com/AxionAOSP/axion_changelogs
+
+Build Date: 2026/05/15
+- Dolby synced with latest changes
+- A whole lot of source side changes
+https://github.com/AxionAOSP/axion_changelogs
+
+AxionOS v2.5
+Build Date: 2026/04/08
+- Introduced AxionFx
+- GameBar upstreamed to latest
+- A whole lot of source side changes
+
+AxionOS v2.4
+Build Date: 2026/03/04
+- Switched to a new Sony Dolby source with Lunaris Dolby UI
+- Lockscreen shortcuts now customizable
+- Corrected battery capacity overlay
+
+Build Date: 2026/02/06
+- Initial build for A16 QPR1
+- Both gapps and vanilla variants are made available
+- Clean flash is necessary if coming from another rom

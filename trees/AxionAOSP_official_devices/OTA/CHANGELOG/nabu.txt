@@ -1,0 +1,23 @@
+AxionOS v2.9 NOESIS - Build Date: 12/10/2026
+-----------------------------------------------------
+- Synced with latest source
+
+AxionOS v2.8 ONEIRA - Build Date: 05/10/2026
+-----------------------------------------------------
+- Synced with latest source
+- Fixed video playback artifacts in social media apps
+- Dropped AxionFX to rely solely on ViperFX
+
+AxionOS v2.7 PROXIMA (BETA) - Build Date: 04/06/2026
+-----------------------------------------------------
+- Tuned rendering props for smoother system experience
+- Fixed input drops for BT keyboards with trackpads/mouse-keys
+- Kernel Upstreamed to latest source
+- ViperFX is added back
+
+AxionOS v2.6 QUASIS (HOTFIX) - Build Date: 27/05/2026
+-----------------------------------------------------
+- Fixed video playback blacking out after 30 seconds and causing screen flickering
+- Corrected display refresh timings for stable 120Hz performance
+- Fixed landscape games opening squished at the top instead of full screen
+- Fixed the lockscreen refusing to stay in landscape when auto-rotate is turned off

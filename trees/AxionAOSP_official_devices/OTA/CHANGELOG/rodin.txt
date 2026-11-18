@@ -1,0 +1,75 @@
+Device: POCO X7 Pro
+Device code name: rodin
+Device maintainer: Sensei
+
+Date - 08/06/2026
+=================
+- GMS VARIANT 
+  - Switched to Core from Pico
+  - Included Partner set-up
+- Disable display refresh rate override
+- Whitelist XiaomiParts
+- Disable FRP
+- Fixed HTR can't turn on
+- Bring back Thermal Profiles
+- More small improvements
+
+Date - 24/05/2026
+=================
+- OS3.0.10.0.WOJMIXM blobs
+- Switch to cortex-a76 optimizations
+- Add doze gesture options
+- Disable bluetooth by default
+- Rm cache package on early boot
+- Disable blurs during app launch
+- More misc changes
+
+Date - 10/04/2026
+=================
+- Resolve charging time remaining
+- Reconfigure batterysecret
+- Reconfigure zram from hardware/google/pixel
+- Dropped miuicamera (go fix urself plz)
+- Increase SF idle timer
+- Reduce brightness doze to 4 (darker AOD)
+- Update phase offsets (better scrolling on 60/120)
+- FOD optmizations
+- Audio volume optimizations
+- Import CIT app (trigger it with *#*#6484#*#* on dialer) for speaker/fingerprint calibration
+- Switch to mq-deadline I/O scheduler
+- Migrated to AIDL audio service
+- Fixed up dolby media codecs (should be available on apple music)
+- Dropped ViPER4AndroidFX
+- Enabled AOD wallpaper
+
+Date - 07/02/2026
+=================
+- Switch back to OS2.0.204.0.VOJMIXM firmware
+- Patch out the camera blobs again
+- Switched to MiuiCamera (fixed 1080p60 and 4k60)
+- Import thermal configuration from OS3.0.9.0.WOJMIXM
+- Refactor XiaomiParts from duchamp
+- Use MIUI/HyperOS color modes
+
+Date - 02/02/2026
+=================
+- Upstream blobs to OS3.0.8.0.WOJMIXM
+- Yet another tune out the powerhint and surfaceflinger configuration
+- Some optimizations on power init
+- Drop libmisoundcrossfade, mediaeventgather and libxlog (Audio optimizations)
+- Disable proximity usage during doze
+- Migrate to hardware/dolby (new Dolby UI)
+- Define FRP partitions (User-reminder for prevent fingerprint crashing)
+- Switched to source-built C2 service
+- Set GPU governor to simple_ondemand
+
+Date - 09/01/2026
+=================
+- Initial official release
+- Resolved NPU issues on SuperImage app
+- Switch to AOSP Health AIDL
+- Enable WPA3-SAE softap
+- Shipped ViPER4AndroidFX
+- Switch architecture to armv9-a
+- Tune out the powerhint and surfaceflinger configuration
+

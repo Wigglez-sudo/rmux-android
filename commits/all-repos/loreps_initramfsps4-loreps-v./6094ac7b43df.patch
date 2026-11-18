@@ -1,0 +1,85 @@
+From 6094ac7b43dfdf2771161435b9dc3399a3e6772c Mon Sep 17 00:00:00 2001
+From: Armandas Kvietkus <armandas.kvietkus@proton.me>
+Date: Mon, 12 Oct 2026 11:12:36 +0200
+Subject: [PATCH] bake: keep repo files out of the archive and pack as root
+
+Signed-off-by: Armandas Kvietkus <armandas.kvietkus@proton.me>
+---
+ .gitattributes |  3 +--
+ bake.sh        | 40 ++++++++++++++--------------------------
+ 2 files changed, 15 insertions(+), 28 deletions(-)
+ mode change 100644 => 100755 bake.sh
+
+diff --git a/.gitattributes b/.gitattributes
+index dfe0770..6313b56 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -1,2 +1 @@
+-# Auto detect text files and perform LF normalization
+-* text=auto
++* text=auto eol=lf
+diff --git a/bake.sh b/bake.sh
+old mode 100644
+new mode 100755
+index 0ed9b58..f6d7e58
+--- a/bake.sh
++++ b/bake.sh
+@@ -5,11 +5,9 @@ set -eu
+ SRC="$(cd "$(dirname "$0")" && pwd)"
+ OUT="${SRC}/initramfs.cpio.gz"
+ 
+-PRODUCTION=0
+ for arg in "$@"; do
+     case "$arg" in
+         -production|--production)
+-            PRODUCTION=1
+             ;;
+         *)
+             echo "Unknown argument: $arg" >&2
+@@ -21,32 +19,22 @@ done
+ 
+ cd "$SRC"
+ 
+-# Remove any previous archive
+ rm -f "$OUT"
+ 
+-chmod +x ./init
+-chmod +x ./bin/* 2>/dev/null || true
+-chmod +x ./hooks/* 2>/dev/null || true
+-GIT_HASH="$(git rev-parse --short=7 HEAD)"
+-printf '%s\n' "$GIT_HASH" > GIT_HASH
+-# Build the exclusion list for find
+-if [ "$PRODUCTION" -eq 1 ]; then
+-    echo "Production mode: excluding .git/, .github/, .gitignore"
+-    FIND_EXCLUDES="\( -name 'bake.sh' \
+-        -o -name 'initramfs.cpio.gz' \
+-        -o -name '.git' \
+-        -o -name '.github' \
+-        -o -name '.gitignore' \) -prune"
+-else
+-    FIND_EXCLUDES="\( -name 'bake.sh' \
+-        -o -name 'initramfs.cpio.gz' \) -prune"
+-fi
+-
+-eval "find . \
+-    -mindepth 1 \
+-    $FIND_EXCLUDES \
+-    -o -print0" \
+-| cpio --null -o -H newc --quiet \
++chmod +x ./init ./bin/* ./hooks/*/* ./etc/profile.d/* 2>/dev/null || true
++git rev-parse --short=7 HEAD 2>/dev/null > GIT_HASH || echo unknown > GIT_HASH
++
++find . -mindepth 1 \( \
++        -path ./bake.sh \
++        -o -path ./initramfs.cpio.gz \
++        -o -path ./README.md \
++        -o -path ./.git \
++        -o -path ./.github \
++        -o -path ./.gitignore \
++        -o -path ./.gitattributes \
++    \) -prune -o -print0 \
++| LC_ALL=C sort -z \
++| cpio --null -o -H newc -R 0:0 --quiet \
+ | gzip -9 > "$OUT"
+ 
+ echo "Wrote $OUT ($(du -h "$OUT" | cut -f1))"

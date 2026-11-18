@@ -1,0 +1,120 @@
+AxionOS v2.7
+Build Date : 10/06/2026
+
+- Attempt to fix fingerprint on realme 5 (rmx1911)
+- Change default screen smallest width to 446dp
+- rename /persist to /mnt/vendor/persist fixes log spam
+- overlay: Fix lockscreen charging info
+- Improves system performance
+- Improves system stability
+
+AxionOS v2.6
+Build Date : 22/05/2026
+
+- Optimize vfs cache pressure
+- Bump kernel BPF version override to 5.10.239
+- Bump watermark threshold to 120
+- Update Bluetooth blobs from rmx2050 (fixes video and audio mismatch with earbuds)
+- Merged 5.10 bpf and Syned Kernel with Lineage sm8150
+
+AxionOS v2.4
+Build Date : 7/02/2026
+
+- Update SurfaceFlinger duration from kalama
+- Overlay disable blur by default
+- Improves system performance
+- Improves system stability
+
+AxionOS v2.3
+Build Date : 9/01/2026
+
+- Disable high performance transitions
+- Reduce blur radius
+- Syned Kernel with Lineage sm8150
+
+AxionOS v2.2.1
+Build Date : 18/12/2025
+
+- Fixed Facebook reels laggy video
+- Update graphics blobs from sweet_k6a
+- Update media blobs from sweet_k6a
+- audio: Fix mic volume
+
+AxionOS v2.2.1
+Build Date : 29/11/2025
+
+- Improves system performance
+- Improves system stability
+
+AxionOS v2.2
+Build Date : 16/10/2025
+
+- Checkout wifi overlay from caf
+- wifi: Configure correct overlay configuration.
+- audio: Drop 24 and 32 bit recording support (fixes low mic volume on meta app)
+- Remove some deprecated telephony overlays
+- Drop msm_irqbalance and config (as we switched to sbalance)
+- Disable zram writeback
+- wifi: Update WCNSS_qcom_cfg.ini from sm8150
+- Migrate to QTI USB Gadget AIDL HAL
+- Build Lineage Health HAL (charging control feature)
+- correct fs inlinecrypt in fstab
+
+Kernel side.
+- Switch back to zram again
+
+AxionOS v2.1
+Build Date : 16/10/2025
+
+Device side.
+- Update remaining blobs from LA.UM.9.1.r1-13700-SMxxx0.QSSI13.0
+- Update Thermal blobs from laurel_sprout V12.0.26.0.RFQMIXM
+- Silence Codec2 and libperfmgr spammy logs
+- Update sensor stack from rmx2050
+- Switch to AIDL camera HAL
+- Uprev audio HAL to V7
+- Update Snapdragon Computer Vision Engine Blobs from LA.UM.9.1.r1-13700-SMxxx0.QSSI13.0
+- Use aidl sensors multihal
+- Include Dolby Atmos
+- Switch to USB 1.3-basic HAL
+- Update DRM Widevine from ginkgo V12.5.12.0.RCOEUXM
+- Drop zram configration from post_boot
+- Fix mic issues in apps like WhatsApp
+- Ship custom modified task_profiles and cgroup
+- Patch Widevine and Codec C2 for cgroup migration
+- Cleanup class_main/early_boot/post_boot/qcom scripts
+- Implement extension for kernelspace battery saver
+- wlan: Clean up WCNSS_qcom_cfg.ini
+
+Kernel side.
+- Enable kernelspace battery saver
+- Tweak memory pressure for 3/4GB RAM devices
+- adreno: Disable throttling
+- Enable devfreq_boost And CPU Input Boost
+- Disable zram and Enable ZSWAP and VBSWAP
+- Enable and Configure Sbalance
+- Switch to Simple low memory killer
+
+AxionOS v1.6
+Build Date : 22/06/2025
+
+- Final A15 Build
+- Switched to user build type
+- Remove unused odex/oat files from pinner list.
+- overlay: Remove unused BT related configs
+- Move Bluetooth power overlays to sysprops
+- overlay: Force enable PowerOffAlarmService
+- Checkout Bluetooth and Ant+ props/flags from sm6150-common
+- sepolicy: label more sysfs wakeup node
+- Drop Duplicate genfs wakeup nodes
+
+AxionOS v1.4
+Build Date : 16/05/2025
+
+- Decrease swappiness to 60
+- Add context_hub into audio hal group
+- Add "system" group to Audio HAL
+- audio: switch to open source sound trigger hal
+- Enable WPA2 to WPA3 auto-upgrade
+- Switch to AIDL USB HAL
+- Fixed Random reboot bug

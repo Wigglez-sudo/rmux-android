@@ -1,0 +1,21 @@
+From cfd1e4b0c07a86fcecac8d5359dfe5802281f94e Mon Sep 17 00:00:00 2001
+From: Armandas Kvietkus <armandas.kvietkus@proton.me>
+Date: Mon, 12 Oct 2026 11:12:36 +0200
+Subject: [PATCH] README: note the EAP key requirement
+
+Signed-off-by: Armandas Kvietkus <armandas.kvietkus@proton.me>
+---
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/README.md b/README.md
+index fbf83a2..42682b8 100644
+--- a/README.md
++++ b/README.md
+@@ -11,4 +11,6 @@
+ # How to run:
+ On a linux host, run `./bake.sh`, It will produce an `initramfs.cpio.gz` file. (vulkan will be broken this way, as local builds dont have firmware)
+ 
++The PS4 loader must add `/key/eap_hdd_key.bin` to the initramfs. The internal drive can not be opened without it.
++
+ ...Or download from releases https://github.com/GattoDev-debug/initramfs-ps4/releases/latest

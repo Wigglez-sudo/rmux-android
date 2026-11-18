@@ -1,0 +1,57 @@
+From fc5d00c670a93388b75290916ed9bc41a0f8948b Mon Sep 17 00:00:00 2001
+From: rmuxnet <armandas.kvietkus@proton.me>
+Date: Thu, 16 Jul 2026 12:42:29 +0000
+Subject: [PATCH] fs/open: fix addon.d hide memory leak in do_faccessat
+
+Signed-off-by: kvsnr113 <kvsnrprojkt113@gmail.com>
+---
+ fs/open.c | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
+diff --git a/fs/open.c b/fs/open.c
+index ed66839701c9..15028135df6c 100644
+--- a/fs/open.c
++++ b/fs/open.c
+@@ -387,12 +387,16 @@ long do_faccessat(int dfd, const char __user *filename, int mode)
+ 	struct filename *kname;
+ 	kname = getname(filename);
+ 
+-	if (mode & ~S_IRWXO)	/* where's F_OK, X_OK, W_OK, R_OK? */
++	if (mode & ~S_IRWXO) {	/* where's F_OK, X_OK, W_OK, R_OK? */
++		putname(kname);
+ 		return -EINVAL;
++	}
+ 
+ 	override_cred = prepare_creds();
+-	if (!override_cred)
++	if (!override_cred) {
++		putname(kname);
+ 		return -ENOMEM;
++	}
+ 
+ 	override_cred->fsuid = override_cred->uid;
+ 	override_cred->fsgid = override_cred->gid;
+@@ -428,16 +432,14 @@ long do_faccessat(int dfd, const char __user *filename, int mode)
+ 
+ 	old_cred = override_creds(override_cred);
+ 
+-	if (unlikely(is_app_uid())) {
+-		if (!IS_ERR(kname)) {
+-			if (should_hide_addond(kname->name)) {
+-				putname(kname);
+-				res = -ENOENT;
+-				goto out;
+-			}
+-		putname(kname);
++	if (!IS_ERR(kname)) {
++		if (unlikely(is_app_uid()) && should_hide_addond(kname->name)) {
++			putname(kname);
++			res = -ENOENT;
++			goto out;
+ 		}
+-}
++		putname(kname);
++	}
+ retry:
+ 	res = user_path_at(dfd, filename, lookup_flags, &path);
+ 	if (res)

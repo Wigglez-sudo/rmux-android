@@ -1,0 +1,22 @@
+From f12ed3be586f60a8b6ba7d911d819f37c2dfa61d Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Thu, 27 Feb 2025 18:11:06 +0100
+Subject: [PATCH] Update device_images.json
+
+---
+ OTA/device_images.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/OTA/device_images.json b/OTA/device_images.json
+index e469a84b..b4313868 100644
+--- a/OTA/device_images.json
++++ b/OTA/device_images.json
+@@ -66,7 +66,7 @@
+     },
+     {
+       "codename": "peridot",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/tokay.png"
++      "imageUrl": "https://i05.appmifile.com/574_item_it/20/05/2024/a0284076baec12a1e563eb3a7dda23d4!400x400!85.png"
+     },
+     {
+       "codename": "vermeer",

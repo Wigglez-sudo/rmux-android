@@ -1,0 +1,171 @@
+AxionOS v2.9
+Build Date : 09/10/2026
+- Upstream kernel to lates qcom_sm8250
+
+AxionOS v2.8
+Build Date : 06/10/2026
+- RvKernel 2.2
+- Add bypass charging toggle
+- parts: Adapt Material U design in some configs
+- overlay: Set IWLAN data service package name
+- sepolicy: Allow init to mount the public FastRPC shell copy
+- increase audio offload buffer size from 32KB to 64KB
+- audio: Fix dynamic USB channel mask declarations
+- Enable speaker protection
+- sepolicy: Add rule for qtidataservices_app
+- dolby: Redesign UI with Material 3 Expressive colors
+- dolby: Add per-band fine tuner to equalizer
+- dolby: Add AutoEQ headphone correction profiles contributor entry
+- dolby: Add persian translations
+- dolby: Redesign main card banner with Dolby logo
+- dolby: fix headphone surround slider stuck at 35
+- dolby: Simplify translation contributor definitions
+- dolby: Add stacked animated avatars with multi-contributor support
+- dolby: Fetch contributor profile pictures from GitHub
+- dolby: Use 2-column grid for translation contributors
+- dolby: Add callout to contribute translations in Credits dialog
+- dolby: Add translation contributors to Credits dialog
+- init: Set media XML codecs variant to _kona
+- overlay: Drop deprecated config_dynamic_bind_ims
+- wlan: Disable RX wakelock feature
+- overlay: Don't let any carrier default WFC mode to IMS Preferred
+- Use foreground cpuset/uclamp for gralloc
+- Use foreground uclamp for hwcomposer
+- Move runtime cpuset configuration after post_boot completed
+- Set dex2oat thread count and cpuset
+- Do not allow foreground tasks to run on CPU7
+- overlay: Use the new auto network selection UI
+- overlay: Set max network scan search time to 254
+- overlay: Overlay the config_network_selection_list_aggregation_enabled
+- switch to Kawase2 render engine blur algorithm
+
+AxionOS v2.7-Beta
+Build Date : 05/06/2026
+- Rebase device tree dropped some commit
+- vintf: Declare graphics allocator
+- Move c2_manifest_vendor.xml to device tree
+- Import Dolby Media Codec
+- audio: Sync with Spatial Audio 
+- Build Lineage Health HAL
+- dolby: Add support for Dolby Vision
+- dolby: Import dax-default's from Motorola
+- dolby: Forcefully Enable bass-enhancer
+- dolby: Move Spatial props to vendor
+- dolby: Update dax-default from MIUI
+
+AxionOS v2.6
+Build Date: 2026/05/17
+Device changelogs:
+- RvKernel 2.0
+- powerhint: Remove hints for Adaptive Battery CPU Throttling
+- powerhint: Set gpu power level to 0 during expensive rendering
+- Enable UBWC aligned framebuffer
+- init: Set media XML codecs variant to _kona
+- Enable VoNR Calls support
+- powerhint: Added UclampTAMin node
+- powerhint: Reduce GPUIdleTimer value
+- rootdir: Remove support for eMMC
+- Remove bogus tombstone directory directives
+- parts: Move to PreferenceFragmentCompat
+- parts: Convert for M3E support
+- parts: Move leftovers to SwitchPreferenceCompat
+- Revert "sm8250-common: Enable ScrollOptimizer"
+- Enable BT low power adaptive control feature
+- props: Disable QTI perf lock usage in camera HAL
+- props: Tune adaptive suspend proprieties
+- init: Remove racey printk setups
+
+AxionOS v2.5
+Build date: 20/04/2026
+Device changelogs:
+- RvKernel 1.7
+- props: Do not use phase offsets as duration
+- Enable small battery configuration
+- Disable QCOM system daemon
+- Switch to Lunaris Dolby
+- Added Gamebar Overlays
+- Overlays: Also Build AOSP-default color modes
+- Overlays: Switch to vendor-defined color modes
+- Disable logging sensors-hal events
+- props: Enable ro.audio.monitorRotation
+- sepolicy: Allow zygote to access unix_stream_socket
+- sepolicy: Allow untrusted_app to getopt zygote
+- Back to GPU Driver from HyperOS munch V816.0.9.0.ULMMIXM
+- Update blobs from pipa OS2.0.14.0.UMZMIXM
+
+AxionOS v2.4
+Build date: 16/01/2026
+Device changelogs:
+- Include BCR
+- Migrate to new Dolby Atmos
+- Update WFD system blobs from dada OS2.0.217.0.WOCMIXM
+- Shim WFD with libinput_shim
+- Define TARGET_SUPPORTED_REFRESH_RATES
+
+Kernel changelogs:
+- RvKernel 1.6
+- treewide: Merge LineageOS/qcom_sm8250
+- treewide: Merge LineageOS/xiaomi_sm8250
+- Adreno drivers improvement
+- cpufreq drivers improvement
+- charging drivers improvement
+- Use MLGO and Polly optimizer
+
+AxionOS v2.3
+Build date: 16/01/2026
+Device changelogs:
+- Update some soong config variables to bool type
+- Set default Settings.Global.DEVICE_NAME according to MIUI
+- Always use LZ4 for ZRAM
+- Add overlay to improve signal reception
+
+Kernel changelogs:
+- RvKernel 1.5
+- treewide: Merge LineageOS/qcom_sm8250
+- arm64: configs: alioth: Enable CONFIG_ZRAM_WRITEBACK
+- arm64: configs: alioth: Disable CONFIG_SCHED_AUTOGROUP
+- input: misc: aw8697_haptic: Cast 'effect->pattern' to smaller integer type
+
+AxionOS v2.2.1
+Build date: 25/12/2025
+Device changelogs:
+- Increase SurfaceFlinger idle and touch timers to 2000ms
+- Enable touch boost support
+- Configure high touch sampling rate nodes
+- sepolicy: Resolve rild denials
+- Define OEM fast charge sysfs node
+- Mirgrate to lineagehealth IFastCharge
+- Disable NL80211_REG_CHANGED event
+
+Kernel changelogs:
+- RvKernel 1.4
+- treewide: Merge LineageOS/qcom_sm8250
+- drivers: input: touchscreen: fts_spi: Fix high polling rate after suspend & resume
+- Enable CONFIG_USB_RTL8150
+- Enable XDP_SOCKETS
+- Add sysctl knobs for protecting the working set
+- Configure memory protection le9ec
+
+AxionOS v2.2.1
+Build date: 09/12/2025
+Device changelogs:
+- Configure burn-in protection for statusbar and navbar
+- Disable turbulence noise
+- Change GPU_FREQS_PATH to freq_table_mhz node
+- Disable bypass charging support (conflict with lineage health)
+- Remove vendor/lineage device framework matrix inclusion
+- Override kernel BPF version to 5.10.239
+- Opt out of speaker_layout_channel_mask field (Required for ABI compatibility with audio HAL compiled before 15 QPR2)
+- Enable double tap to ambient (this config is missing on previous build)
+- Add MLBB and MCGG to sched_lib_name
+
+Kernel changelogs:
+- RvKernel v1.3
+- treewide: Merge LineageOS/qcom_sm8250
+- touchscreen: Disable debugging and production test module
+- Enable force_fast_charge by default
+- Revert "power: smb5-lib: Implement bypass charging" (conflict with lineage health)
+
+AxionOS v2.2.1
+Build date: 27/11/2025
+- Initial official release

@@ -1,0 +1,82 @@
+AxionOS v2.1
+
+Build Date : 24/10/2025
+- Better Dolby
+- included DSPVolumeSynchronizer
+- New Kernel with BPF patches
+
+AxionOS v2.2.1
+
+Build Date : 23/11/2025
+- Switched to AIDL thermal hal
+- Kernel improvements
+
+AxionOS v2.2.1
+
+Build Date : 11/12/2025
+- Random Reboots should be fixed
+- spartan: Don't pin camera app in memory
+
+AxionOS v2.3
+
+Build Date : 12/01/2026
+- Added RealmeAddons
+- New DolbyUI
+- Unlocked 2160p recording on supported cameras
+
+AxionOS v2.3
+
+Build Date : 14/01/2026
+- Aperture Camera is not with us anymore
+- Added sepolicy for TextScanner mode (oplus camera)
+
+AxionOS v2.4
+
+Build Date : 31/01/2026
+- New goodies in RealmeAddons
+
+AxionOS v2.4
+
+Build Date : 09/03/2026
+- Improved RealmeAddons
+- Switched kernel to Entropy
+
+AxionOS v2.4
+
+Build Date : 10/03/2026
+- Fixed oplus camera black screen issue
+
+AxionOS v2.5
+
+Build Date : 18/04/2026
+- Some under the hood changes to improve stability
+- Kernel Improvements
+
+AxionOS v2.6
+
+Build Date : 23/05/2026
+- Updated FCM level to 7
+- Added ScrollOptimizer
+- Kernel Improvements
+- Some under the hood changes to improve stability
+
+AxionOS v2.7
+
+Build Date : 14/06/2026
+- Brought back the Torch Strenght feature
+- OnePlus Camera patched to work with Google Photos
+- Added OEM charging detection, now correctly displays SuperDart charging during fast charging
+- Added more Dolby profiles
+- Ships with Entropy 1.5 kernel
+
+AxionOS v2.8
+
+Build Date : 06/10/2026
+- Removed RealmeAddons
+- Ships with Entropy 1.6 kernel
+
+AxionOS v2.9
+
+Build Date : 22/10/2026
+- Latest Security Patch
+- Ships with Entropy 1.7 kernel

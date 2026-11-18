@@ -1,0 +1,29 @@
+From 85492341a11dd24a14f6197b019972cb53fc5c40 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Tue, 25 Feb 2025 15:46:45 +0100
+Subject: [PATCH] added a71 VANILLA build
+
+---
+ OTA/VANILLA/a71.json | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+ create mode 100644 OTA/VANILLA/a71.json
+
+diff --git a/OTA/VANILLA/a71.json b/OTA/VANILLA/a71.json
+new file mode 100644
+index 00000000..bc9eca6a
+--- /dev/null
++++ b/OTA/VANILLA/a71.json
+@@ -0,0 +1,13 @@
++{
++    "response": [
++        {
++            "datetime": 1740491765,
++            "filename": "axion-1.1-20250225-OFFICIAL-VANILLA-a71.zip",
++            "id": "d7ae2416ebb3bb95d34cf7aeb6dde3c5",
++            "romtype": "OFFICIAL",
++            "size": 1236161094,
++            "url": "https://github.com/rmuxnet/Axion-A71/releases/download/1.1/axion-1.1-20250225-OFFICIAL-VANILLA-a71.zip",
++            "version": "1.1"
++        }
++    ]
++}

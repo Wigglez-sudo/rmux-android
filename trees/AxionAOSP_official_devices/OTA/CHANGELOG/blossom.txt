@@ -1,0 +1,28 @@
+AxionOS v2.4
+build date: 11/02/2026
+- fixup pixel thermal hal config
+- disable "high performance transitions" (mt6765 is not high)
+- drop haptic text handle
+- set lmk stall_limit_critical threshold
+- disable zram writeback
+- media: update concurrent-instances
+- powerhint: spam drop all FBT and FPSGO hints
+
+AxionOS v2.2.1
+build date: 24/11/2025
+- fix blurry bootanim
+- opt out of speaker_layout_channel_mask field
+- reapply t-alps-q0.mp1-V9.122.1 codecs changes
+- see other source changes
+
+AxionOS v2.2
+build date : 14/11/2025
+- tune lmkd a bit more
+- fix vowifi*
+- see other source changes
+
+AxionOS v2.1
+build date : 14/10/2025
+- initial official stable build
+- disable NL80211_REG_CHANGED event, fix potential wificond crash
+- misc changes

@@ -1,0 +1,201 @@
+From 25e1b54cdd71fa8b7288f6fd0e44821df45deaa1 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Mon, 26 Jan 2026 16:02:05 +0100
+Subject: [PATCH] improve code quality
+
+---
+ app.py          | 49 +++++++++++++++++++++++++++++--------------------
+ src/database.py | 24 ++++++++++++++----------
+ src/scraper.py  | 38 ++++++++++++++++++++++++--------------
+ 3 files changed, 67 insertions(+), 44 deletions(-)
+
+diff --git a/app.py b/app.py
+index 3f862a1..df1007f 100644
+--- a/app.py
++++ b/app.py
+@@ -1,3 +1,8 @@
++"""
++Main application entry point. Handles user interaction,
++CLI interface for searching, and orchestration of scraping and storage.
++"""
++
+ import sys
+ from urllib.parse import urlparse
+ 
+@@ -42,6 +47,29 @@ def process_selection(game):
+     print("-" * 30)
+ 
+ 
++def handle_selection_loop(games):
++    while True:
++        choice = input(
++            "\nEnter number to download (or 'back' to search again): "
++        ).strip()
++        if choice.lower() in ["back", "b"]:
++            break
++
++        try:
++            selection_idx = int(choice) - 1
++            if 0 <= selection_idx < len(games):
++                process_selection(games[selection_idx])
++                continue_choice = input(
++                    "\nSelect another from this list? (y/n): "
++                ).lower()
++                if continue_choice != "y":
++                    break
++            else:
++                print("Invalid number.")
++        except ValueError:
++            print("Please enter a valid number.")
++
++
+ def main():
+     print("=== PS PKG Scraper  ===")
+     init_db()
+@@ -68,26 +96,7 @@ def main():
+             for idx, game in enumerate(games):
+                 print(f"{idx + 1}. {game['title']}")
+ 
+-            while True:
+-                choice = input(
+-                    "\nEnter number to download (or 'back' to search again): "
+-                ).strip()
+-                if choice.lower() in ["back", "b"]:
+-                    break
+-
+-                try:
+-                    selection_idx = int(choice) - 1
+-                    if 0 <= selection_idx < len(games):
+-                        process_selection(games[selection_idx])
+-                        continue_choice = input(
+-                            "\nSelect another from this list? (y/n): "
+-                        ).lower()
+-                        if continue_choice != "y":
+-                            break
+-                    else:
+-                        print("Invalid number.")
+-                except ValueError:
+-                    print("Please enter a valid number.")
++            handle_selection_loop(games)
+ 
+         except KeyboardInterrupt:
+             print("\nExiting...")
+diff --git a/src/database.py b/src/database.py
+index 37faa5d..09cac7d 100644
+--- a/src/database.py
++++ b/src/database.py
+@@ -1,25 +1,31 @@
++"""
++Database persistence layer handling local file caching for game metadata.
++Manages loading, saving, and checking expiration of cached game details.
++"""
++
+ import json
+ import os
+ import time
+ 
+ CACHE_FILE = "games_cache.json"
+-CACHE_TTL = 14400  # 4 hours
+-_cache = {}
++CACHE_TTL = 3153600000
++_cache: dict = {}
+ 
+ 
+ def init_db():
+-    global _cache
+     if os.path.exists(CACHE_FILE):
+         try:
+             with open(CACHE_FILE, "r", encoding="utf-8") as f:
+-                _cache = json.load(f)
++                data = json.load(f)
++                _cache.clear()
++                _cache.update(data)
+             print(f"Local cache loaded ({len(_cache)} items).")
+-        except Exception as e:
++        except (OSError, json.JSONDecodeError) as e:
+             print(f"Error loading cache file: {e}")
+-            _cache = {}
++            _cache.clear()
+     else:
+         print("No cache file found. Created new local cache.")
+-        _cache = {}
++        _cache.clear()
+ 
+ 
+ def get_cached_game(url):
+@@ -40,8 +46,6 @@ def get_cached_game(url):
+ 
+ 
+ def save_to_cache(game_data, links):
+-    global _cache
+-
+     record = {
+         "url": game_data["url"],
+         "title": game_data["title"],
+@@ -56,5 +60,5 @@ def save_to_cache(game_data, links):
+     try:
+         with open(CACHE_FILE, "w", encoding="utf-8") as f:
+             json.dump(_cache, f, indent=4)
+-    except Exception as e:
++    except OSError as e:
+         print(f"Failed to save cache to disk: {e}")
+diff --git a/src/scraper.py b/src/scraper.py
+index e8540e7..2636438 100644
+--- a/src/scraper.py
++++ b/src/scraper.py
+@@ -1,3 +1,8 @@
++"""
++Scraping module responsible for searching games and extracting download links
++from the target superpsx website using cloudscraper and BeautifulSoup.
++"""
++
+ import re
+ import urllib.parse
+ 
+@@ -53,6 +58,24 @@ def search_games(search_query):
+         return []
+ 
+ 
++def _extract_links_from_dl_page(scraper, dl_page_url):
++    links = []
++    try:
++        dl_resp = scraper.get(dl_page_url, timeout=15)
++        dl_soup = BeautifulSoup(dl_resp.content, "html.parser")
++
++        tables = dl_soup.select("table")
++        for table in tables:
++            for link in table.select("a[href]"):
++                href = link["href"]
++                if not any(domain in href for domain in IGNORE_DOMAINS):
++                    links.append(href)
++
++    except Exception as e:
++        print(f"DL page scraping failed: {e}")
++    return links
++
++
+ def get_game_links(game_url, current_size="N/A"):
+     scraper = get_scraper()
+     final_links = []
+@@ -74,20 +97,7 @@ def get_game_links(game_url, current_size="N/A"):
+         )
+ 
+         if dl_node:
+-            dl_page_url = dl_node["href"]
+-            try:
+-                dl_resp = scraper.get(dl_page_url, timeout=15)
+-                dl_soup = BeautifulSoup(dl_resp.content, "html.parser")
+-
+-                tables = dl_soup.select("table")
+-                for table in tables:
+-                    for link in table.select("a[href]"):
+-                        href = link["href"]
+-                        if not any(domain in href for domain in IGNORE_DOMAINS):
+-                            final_links.append(href)
+-
+-            except Exception as e:
+-                print(f"DL page scraping failed: {e}")
++            final_links = _extract_links_from_dl_page(scraper, dl_node["href"])
+ 
+         return list(set(final_links)), new_size
+ 

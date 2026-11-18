@@ -1,0 +1,74 @@
+From a0c144a03b6e5a959353de31e4cb74ed06945476 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Thu, 27 Feb 2025 17:57:55 +0100
+Subject: [PATCH] Update device_images.json
+
+---
+ OTA/device_images.json | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/OTA/device_images.json b/OTA/device_images.json
+index 83e0a90b..ac232fee 100644
+--- a/OTA/device_images.json
++++ b/OTA/device_images.json
+@@ -54,7 +54,7 @@
+     },
+     {
+       "codename": "cancunf",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/cancunf.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     },
+     {
+       "codename": "beryllium",
+@@ -66,11 +66,11 @@
+     },
+     {
+       "codename": "peridot",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/peridot.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     },
+     {
+       "codename": "vermeer",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/vermeer.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     },
+     {
+       "codename": "vayu",
+@@ -78,15 +78,15 @@
+     },
+     {
+       "codename": "veux",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/veux.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     },
+     {
+       "codename": "duchamp",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/duchamp.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     },
+     {
+       "codename": "begonia",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/begonia.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     },
+     {
+       "codename": "sweet",
+@@ -98,15 +98,15 @@
+     },
+     {
+       "codename": "LG8n",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/lg8n.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     },
+     {
+       "codename": "LG7n",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/lg7n.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     },
+     {
+       "codename": "pipa",
+-      "imageUrl": "https://wiki.lineageos.org/images/devices/pipa.png"
++      "imageUrl": "https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3ea6b437be789ded213fd_45.png"
+     }
+   ]
+ }

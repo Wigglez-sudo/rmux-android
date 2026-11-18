@@ -1,0 +1,22 @@
+AxionOS v2.6
+Build Date 2026/05/23
+- Switch default governor to reflex
+- Update Kernel to Chihiro v2.1
+- Switch to GED GPU control
+- Revert "LH7n: Force enable Morpho EIS capabilities"
+
+AxionOS v2.5
+Build Date 2026/04/17
+- Update Mali Blobs to r38p1
+- Sync with Axion sources
+
+Build Date: 2026/04/09
+- Update Kernel to Chihiro v1.4
+- Initial AxionOS 2.5 build
+
+AxionOS v2.4
+Build Date: 2026/01/29
+- Update Kernel to Mahiru 26.0
+- Build mediaTek WiFi lib and enable OUI support on  wpa_supplicant_8
+- Switch to source-built AIDL C2 service
+

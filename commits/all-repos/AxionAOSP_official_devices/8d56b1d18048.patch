@@ -1,0 +1,29 @@
+From 8d56b1d18048cca8df302cd9a171b134d8681f85 Mon Sep 17 00:00:00 2001
+From: rmuxnet <116457149+rmuxnet@users.noreply.github.com>
+Date: Sun, 23 Feb 2025 17:39:39 +0100
+Subject: [PATCH] added a71.json
+
+---
+ OTA/GMS/a71.json | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+ create mode 100644 OTA/GMS/a71.json
+
+diff --git a/OTA/GMS/a71.json b/OTA/GMS/a71.json
+new file mode 100644
+index 00000000..c80d28a9
+--- /dev/null
++++ b/OTA/GMS/a71.json
+@@ -0,0 +1,13 @@
++{
++    "response": [
++        {
++            "datetime": 1740323073,
++            "filename": "axion-1.1-20250223-OFFICIAL-GMS-a71.zip",
++            "id": "0c3b997a6df16a4eb15e115353d19f78",
++            "romtype": "OFFICIAL",
++            "size": 1687698103,
++            "url": "https://github.com/rmuxnet/Axion-A71/releases/download/1.1/axion-1.1-20250223-OFFICIAL-GMS-a71.zip",
++            "version": "1.1"
++        }
++    ]
++}
