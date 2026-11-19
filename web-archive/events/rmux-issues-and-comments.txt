@@ -152,6 +152,51 @@ ota: veux: Initial update
 
 
 
+=== 2025-03-25T21:15:03Z  AxionAOSP/official_devices  [review]
+
+
+{
+ "id": 2715220486,
+ "node_id": "PRR_kwDON26dis6h1voG",
+ "user": {
+  "login": "rmuxnet",
+  "id": 116457149,
+  "node_id": "U_kgDOBvD-vQ",
+  "avatar_url": "https://avatars.githubusercontent.com/u/116457149?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/rmuxnet",
+  "html_url": "https://github.com/rmuxnet",
+  "followers_url": "https://api.github.com/users/rmuxnet/followers",
+  "following_url": "https://api.github.com/users/rmuxnet/following{/other_user}",
+  "gists_url": "https://api.github.com/users/rmuxnet/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/rmuxnet/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/rmuxnet/subscriptions",
+  "organizations_url": "https://api.github.com/users/rmuxnet/orgs",
+  "repos_url": "https://api.github.com/users/rmuxnet/repos",
+  "events_url": "https://api.github.com/users/rmuxnet/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/rmuxnet/received_events",
+  "type": "User",
+  "user_view_type": "public",
+  "site_admin": false
+ },
+ "body": null,
+ "commit_id": "b49902986d12b84c62bca06540d92e946d3aafca",
+ "submitted_at": "2025-03-25T21:15:02Z",
+ "state": "approved",
+ "html_url": "https://github.com/AxionAOSP/official_devices/pull/56#pullrequestreview-2715220486",
+ "pull_request_url": "https://api.github.com/repos/AxionAOSP/official_devices/pulls/56",
+ "author_association": "CONTRIBUTOR",
+ "_links": {
+  "html": {
+   "href": "https://github.com/AxionAOSP/official_devices/pull/56#pullrequestreview-2715220486"
+  },
+  "pull_request": {
+   "href": "https://api.github.com/repos/AxionAOSP/official_devices/pulls/56"
+  }
+ }
+}
+
+
 === 2025-12-03T16:36:03Z  PipaDB/fedora-xiaomi-pipa  [PR #1 opened]
 
 
