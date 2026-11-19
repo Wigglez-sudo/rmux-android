@@ -1,3 +1,127 @@
+=== 2025-02-20T21:20:58Z  rmuxnet/Axion-A71  [ReleaseEvent]
+
+
+
+
+
+=== 2025-02-22T10:31:10Z  AxionAOSP/official_devices  [issue #5 opened]
+[Maintainer Application] Samsung Galaxy A71 4G (a71) - Rmux
+
+### 🛠 Your Name
+
+Rmux
+
+### 📱 Device Name & Codename
+
+Samsung Galaxy A71 4G (a71)
+
+### 📲 Telegram Username
+
+@mx7111
+
+### 🔗 GitHub Profile
+
+https://github.com/rmuxnet
+
+### 🗂 Device Tree Source
+
+https://github.com/rmuxnet/android_device_samsung_a71
+
+### 📁 Kernel Source
+
+https://github.com/rmuxnet/android_kernel_samsung_a71
+
+### 📦 Vendor Source
+
+https://github.com/rmuxnet/proprietary_vendor_samsung_a71
+
+### 📝 Experience & Contributions
+
+ROMs Maintained:
+
+    [Pixelage for Xiaomi Pad 6](https://t.me/XiaomiPad6Global/196417): A collaborative project with my friend [Roman](https://github.com/JaxTheWolf).
+    [AxionOS for Samsung Galaxy A71 4G](https://t.me/rmuxnet/169): Built and maintained personally.
+
+Technical Contributions:
+
+    I haven’t yet worked on device trees or kernel fixes as I'm still learning those areas, but I plan to explore them further.
+
+Motivation for the AxionOS Maintainer Role:
+
+    I believe in the quality and potential of AxionOS. I’m excited to contribute more actively as a maintainer and help improve the ROM while continuing to expand my technical skills.
+
+### 📷 Build Proof (Screenshots)
+
+https://i.ibb.co/GQQf79dc/Screenshot-20250222-112755-Settings.png
+
+### ⚠️ Agreement
+
+- [x] I understand that the only benefit of official maintainership is the ability to post my builds to the official channel, and I accept this.
+- [x] I understand the responsibilities of being a maintainer and will provide timely updates.
+- [x] I will follow the official guidelines for ROM development and ensure my sources are properly maintained.
+- [x] I am aware that failure to maintain my device may result in my removal as a maintainer.
+- [x] I confirm that I have tested my build, and it boots without major issues.
+
+
+=== 2025-02-23T00:36:42Z  AxionAOSP/official_devices  [issue #5 closed]
+[Maintainer Application] Samsung Galaxy A71 4G (a71) - Rmux
+
+### 🛠 Your Name
+
+Rmux
+
+### 📱 Device Name & Codename
+
+Samsung Galaxy A71 4G (a71)
+
+### 📲 Telegram Username
+
+@mx7111
+
+### 🔗 GitHub Profile
+
+https://github.com/rmuxnet
+
+### 🗂 Device Tree Source
+
+https://github.com/rmuxnet/android_device_samsung_a71
+
+### 📁 Kernel Source
+
+https://github.com/rmuxnet/android_kernel_samsung_a71
+
+### 📦 Vendor Source
+
+https://github.com/rmuxnet/proprietary_vendor_samsung_a71
+
+### 📝 Experience & Contributions
+
+ROMs Maintained:
+
+    [Pixelage for Xiaomi Pad 6](https://t.me/XiaomiPad6Global/196417): A collaborative project with my friend [Roman](https://github.com/JaxTheWolf).
+    [AxionOS for Samsung Galaxy A71 4G](https://t.me/rmuxnet/169): Built and maintained personally.
+
+Technical Contributions:
+
+    I haven’t yet worked on device trees or kernel fixes as I'm still learning those areas, but I plan to explore them further.
+
+Motivation for the AxionOS Maintainer Role:
+
+    I believe in the quality and potential of AxionOS. I’m excited to contribute more actively as a maintainer and help improve the ROM while continuing to expand my technical skills.
+
+### 📷 Build Proof (Screenshots)
+
+https://i.ibb.co/GQQf79dc/Screenshot-20250222-112755-Settings.png
+
+### ⚠️ Agreement
+
+- [x] I understand that the only benefit of official maintainership is the ability to post my builds to the official channel, and I accept this.
+- [x] I understand the responsibilities of being a maintainer and will provide timely updates.
+- [x] I will follow the official guidelines for ROM development and ensure my sources are properly maintained.
+- [x] I am aware that failure to maintain my device may result in my removal as a maintainer.
+- [x] I confirm that I have tested my build, and it boots without major issues.
+
+
 === 2025-12-03T16:36:03Z  PipaDB/fedora-xiaomi-pipa  [PR #1 opened]
 
 
